@@ -45,10 +45,10 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <button class="btn btn-3">Voir le produit</button>
+                        <a href="productDetails.php?id=8"><button class="btn btn-3">Voir le produit</button></a>
                     </div>
                     <div class="carousel-item">
-                        <button class="btn btn-3">Voir le produit</button>
+                        <a href="productDetails.php?id=7"><button class="btn btn-3">Voir le produit</button></a>
                     </div>
                     <div class="carousel-item">
                         <button class="btn btn-3">Voir le produit</button>
