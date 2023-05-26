@@ -146,6 +146,10 @@ INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_cate
 VALUES("Iphone 6",90,"telephone",16,"J'adore les pates et vous ?","img/compagny/CYTEL/iphone6.jpg", 3, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
 VALUES("Iphone 8",360,"telephone",18,"Telephone sucre au sucre","img/compagny/CYTEL/iphone8.jpg", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
+INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
+VALUES("Iphone 14",900,"telephone",21,"Smartphone dernière génération de la marque Apple","img/compagny/MaximePull/Iphone14", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
+INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
+VALUES("PS5",550,"console",7,"Console de salon SONY dernière generation","img/compagny/MaximePull/PS5", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 select * from marketplace_product;
 
 /*Partie livreur*/

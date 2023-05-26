@@ -54,17 +54,13 @@ html, body {
   line-height: 30px;
   height: auto;
 }
-
-#map {
-  height: 50%;
-  width: 50%;
-  position: relative;
-  margin:auto;
-  margin-left: 25%;
-  margin-right: 25%;
-
+#map, #sidebar {
+  height: 400px;
 }
-
+#map {
+  width: 70%;
+  float: left;
+}
 #sidebar {
   flex: 0 1 auto;
   padding: 0;

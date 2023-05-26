@@ -271,91 +271,63 @@ $req->closeCursor();
 ?>
 
 <!DOCTYPE html>
-
 <html>
   <head>
     <title>Affichage d'étapes</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="../js/map.js"></script>
-    <link rel= "stylesheet" type="text/css" href="../css/map.css">
+    <script src="./js/map.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/map.css">
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+        margin: 20px 0 0 0; /* Ajout d'une marge en haut de 20px */
+        background: #f8f9fa;
+      }
+      #floating-panel {
+        text-align: center;
+        padding: 20px;
+        border-radius: 5px;
+        background: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      }
+      #container {
+        width: 100%;
+        max-width: 900px;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
-    <div id="floating-panel">
+    <div id="floating-panel" class="mb-3">
       <strong>Start:</strong>
-      <select id="start">
-
+      <select id="start" class="form-control mb-2">
         <?php
-        for ($i=0; $i<=$_SESSION['nb_adresse']; $i++)
-        {
+          for ($i=0; $i<=$_SESSION['nb_adresse']; $i++) {
             echo "<option value=".$_SESSION['etape'][$i].">Etape ".($i+1)."</option>";
-
-        }
+          }
         ?>
-
       </select>
-      <br />
       <strong>End:</strong>
-      <select id="end">
+      <select id="end" class="form-control mb-2">
         <?php
-            for ($i=0; $i<=$_SESSION['nb_adresse']; $i++)
-            {
+            for ($i=0; $i<=$_SESSION['nb_adresse']; $i++) {
                 echo "<option value=".$_SESSION['etape'][$i].">Etape ".($i+1)."</option>";
-
             }
-            ?>
+        ?>
       </select>
-      <br />
-      <!--<b>Mode of Travel: </b>
-      <select id="mode">
-        <option value="DRIVING">Driving</option>
-        <option value="WALKING">Walking</option>
-        <option value="BICYCLING">Bicycling</option>
-        <option value="TRANSIT">Transit</option>
-      </select> -->
     </div>
     <div id="container">
       <div id="map"></div>
       <div id="sidebar"></div>
     </div>
-    <!--<div style="display: none">
-      <div id="floating-panel">
-        <strong>Start:</strong>
-        <select id="start">
-          <option value="chicago, il">Chicago</option>
-          <option value="st louis, mo">St Louis</option>
-          <option value="joplin, mo">Joplin, MO</option>
-          <option value="oklahoma city, ok">Oklahoma City</option>
-          <option value="amarillo, tx">Amarillo</option>
-          <option value="gallup, nm">Gallup, NM</option>
-          <option value="flagstaff, az">Flagstaff, AZ</option>
-          <option value="winona, az">Winona</option>
-          <option value="kingman, az">Kingman</option>
-          <option value="barstow, ca">Barstow</option>
-          <option value="san bernardino, ca">San Bernardino</option>
-          <option value="los angeles, ca">Los Angeles</option>
-        </select>
-        <br />
-        <strong>End:</strong>
-        <select id="end">
-          <option value="chicago, il">Chicago</option>
-          <option value="st louis, mo">St Louis</option>
-          <option value="joplin, mo">Joplin, MO</option>
-          <option value="oklahoma city, ok">Oklahoma City</option>
-          <option value="amarillo, tx">Amarillo</option>
-          <option value="gallup, nm">Gallup, NM</option>
-          <option value="flagstaff, az">Flagstaff, AZ</option>
-          <option value="winona, az">Winona</option>
-          <option value="kingman, az">Kingman</option>
-          <option value="barstow, ca">Barstow</option>
-          <option value="san bernardino, ca">San Bernardino</option>
-          <option value="los angeles, ca">Los Angeles</option>
-        </select>
-      </div>
-    </div>-->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB04_7zWKon7pqwnfihrhWGdKusU5fUGc4&callback=initMap&v=weekly"
-      defer
-    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB04_7zWKon7pqwnfihrhWGdKusU5fUGc4&callback=initMap&v=weekly" defer></script>
   </body>
 </html>
-    
