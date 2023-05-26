@@ -49,7 +49,7 @@
                     else{
                         echo '
                         <div class="input-box">
-                            <form method="post" onsubmit="return validateForm()">
+                            <form method="post" onsubmit="return validateForm()" action="market.php">
                                 <div class="mb-3">
                                     <input type="text"  id="category" name="category" placeholder="Rechercher...">
                                     <span class="icon">

@@ -62,6 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reponse = $bdd->query('select * from marketplace_product where product_category="telephone"');
     */
 
+    
+
    //preparer la requet
    $req = $PDO->prepare('SELECT * FROM marketplace_product WHERE product_category LIKE ? OR product_name LIKE ?');
    //transmettre la liste des parametres
