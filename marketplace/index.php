@@ -12,24 +12,21 @@
 <html>
 
 <head>
+    <title>MarketPlace</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarketPlace</title>
+
     <link rel="stylesheet" href="css/style.css">
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-
-    <link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
 <body>
@@ -40,7 +37,6 @@
     <div class="container-fluid">
         <div class="row">
             <!-- slider banner	 -->
-
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -49,25 +45,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="info ">
-                            <div class="slider-btn">
-                                <button class="btn btn-3">Voir le produit</button>
-                            </div>
-                        </div>
+                        <button class="btn btn-3">Voir le produit</button>
                     </div>
                     <div class="carousel-item">
-                        <div class="info">
-                            <div class="slider-btn">
-                                <button class="btn btn-3">Voir le produit</button>
-                            </div>
-                        </div>
+                        <button class="btn btn-3">Voir le produit</button>
                     </div>
                     <div class="carousel-item">
-                        <div class="info">
-                            <div class="slider-btn">
-                                <a href="market.php"><button class="btn btn-3">Voir le produit</button></a>
-                            </div>
-                        </div>
+                        <button class="btn btn-3">Voir le produit</button>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
