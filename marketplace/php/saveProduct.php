@@ -39,7 +39,7 @@
             $results->closeCursor();
 
             //On creer le dossier
-            $dossier = 'img/'.$nameCompagny;
+            $dossier = 'img/compagny/'.$nameCompagny;
             if (!file_exists($dossier)) {
                 mkdir($dossier, 0777, true);
             } 
@@ -47,7 +47,7 @@
             //On sauvegarde l'image dans le dossier image de l'entreprise
             $imgTmp = $_FILES['img']['tmp_name'];
             if (isset($imgTmp)) { 
-                $imgPath = 'img/'.$nameCompagny.'/'.$name.'.png' ;
+                $imgPath = 'img/compagny/'.$nameCompagny.'/'.$name.'.png' ;
                 move_uploaded_file($imgTmp, $imgPath);
             }
 
@@ -70,7 +70,7 @@
             //On injecte le produit dans la base de données
             $sql = "INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
             VALUES
-            ('".$name."','".$price."','".$category."','".$stock."','".$desc."', 'img/compagny".$nameCompagny."/".$name."',".$idCompagny.",'".$monthJSON."');";
+            ('".$name."','".$price."','".$category."','".$stock."','".$desc."', 'img/compagny/".$nameCompagny."/".$name."',".$idCompagny.",'".$monthJSON."');";
 
             $request = $PDO->prepare($sql);
             $request->execute();    
