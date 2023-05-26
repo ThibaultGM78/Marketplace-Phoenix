@@ -1,0 +1,20 @@
+table
+{
+    margin: auto;
+    border-spacing: 25px 5rem;
+}
+td
+{
+    text-align :center;            
+}
+a{
+    text-decoration:none;
+}
+.imgProduct{
+    width:128px;
+    height:117px
+}
+a:hover 
+{
+    color: orange;
+}

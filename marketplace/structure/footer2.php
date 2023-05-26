@@ -16,6 +16,7 @@
 <body>
     <footer id="footer">
         <h1 class="text-center">PHOENIX</h1>
+        <p class="text-center">slogan ou jsp quoi</p>
         <div class="icons text-center">
             <i class="bx bxl-twitter"></i>
             <i class="bx bxl-facebook"></i>
