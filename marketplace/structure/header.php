@@ -47,15 +47,23 @@
                         </div>';
                     }
                     else{
+
+                        
+
                         echo '
                         <div class="input-box">
                             <form method="post" onsubmit="return validateForm()" action="market.php">
                                 <div class="mb-3">
                                     <input type="text"  id="category" name="category" placeholder="Rechercher...">
                                     <span class="icon">
-                                        <i class="uil uil-search search-icon"></i>
-                                        <a href="../deliveries/php/history.php"><i><img src="img/historique.png" alt="" width="25px"></i></a>
-                                        <a id="decal" href="basket.php"><i><img src="img/shopping-cart.png"  alt="" width="30px"></i></a>
+                                        <i class="uil uil-search search-icon"></i>';
+                                        
+                                        
+                        if(!empty($_SESSION['id'])){
+                            echo '<a href="../deliveries/php/history.php"><i><img src="img/historique.png" alt="" width="25px"></i></a>';
+                        }
+                                        
+                        echo               '<a id="decal" href="basket.php"><i><img src="img/shopping-cart.png"  alt="" width="30px"></i></a>
                                     </span>
                                     <i class="uil uil-times close-icon"></i>
                                 </div>
