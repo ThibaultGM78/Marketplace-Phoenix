@@ -1,5 +1,5 @@
 <?php
-    function toBasketTab($basketData){
+    function toBasketTab($basketData){ 
 
         //On retire les caractere "{","}" et """ afin de creer un tableau ou chaque compartiment contient un article et le nombre d'unite de ce dernier mis au panier par l'utilisateur.
         $basketJSON = preg_replace('({)', '', $basketData);
