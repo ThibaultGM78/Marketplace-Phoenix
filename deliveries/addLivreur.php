@@ -6,22 +6,56 @@
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>inscription</title>
-        <link rel="stylesheet" href="css/login.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-        <!-- pour les icons -->
-        <script src="js/addUser.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inscription</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-form {
+            width: 100%;
+            max-width: 380px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .login-form .btn {
+            font-size: 18px;
+            font-weight: bold;
+            height: 50px;
+            background-color: rgb(162, 10, 10);
+            border-color: rgb(162, 10, 10);
+            color: white;
+            border-radius: 0;
+        }
+
+        .login-form .form-label {
+            color: #6c757d;
+        }
+
+        #permit {
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+    </style>
+    <script src="js/addUser.js"></script>
 </head>
+
 <body>
 
     <div class="d-flex justify-content-center align-items-center login-container">
@@ -50,12 +84,14 @@
                 <option value="C">Permis C</option>
                 <option value="D">Permis D</option>
             </select>
-            
-            <button type="submit" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">inscription</button>
 
-            <p class="mt-3 font-weight-normal">Vous possédez déjà un compte ? <a href="connection.php"><strong>Connectez-vous</strong></a></p>
+            <button type="submit" class="btn mt-5 btn-lg btn-custom btn-block text-uppercase">inscription</button>
+
+            <p class="mt-3 font-weight-normal">Vous possédez déjà un compte ? <a
+                    href="connection.php"><strong>Connectez-vous</strong></a></p>
         </form>
     </div>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>
