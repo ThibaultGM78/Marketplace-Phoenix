@@ -102,7 +102,7 @@ VALUES(1,"Phoenix", 1, '{"January": 0,"February": 0,"March": 0,"April": 0,"May":
 /*Contract*/
 INSERT INTO `marketplace_contract`(`contract_start`, `contract_end`, `contract_commission`) VALUES ("2023-02-03","2024-02-03", "15");
 INSERT INTO `marketplace_contract`(`contract_start`, `contract_end`, `contract_commission`) VALUES ("2023-02-03","2025-02-03", "10");
-SET FOREIGN_KEY_CHECKS=1; -- to disable them*/
+SET FOREIGN_KEY_CHECKS=0; -- to disable them*/
 
 /*USER*/
 INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role`)

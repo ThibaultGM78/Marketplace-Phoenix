@@ -43,16 +43,20 @@
             //SQL
             
             try{
-                $options = [
-                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_EMULATE_PREPARES => false
-                ];
                 if(!empty($list[0]['contract_end'])){
-                    $sql = "DELETE marketplace_contract FROM marketplace_contract
-                    WHERE id_compagny ='".$idCompagny."';";			
+                    $sql = "DELETE FROM marketplace_contract
+                    WHERE id_compagny ='".$idCompagny."';";
                     $request = $PDO->prepare($sql);
-                    $request->execute(); 
+                    $request->execute();
+                    echo "<p style='font-weight:bold; color:red;'>Opération réussie, votre contrat a bien été résilié !</p>";
+                    //On reinitialise les donnees de session car l'utilisateur s'est deconnecte.
+                    echo "<p style='font-weight:bold; color:red;'>Déconnexion en cours</p>";
+                    unset($_SESSION);
+                    //On detruit ensuite la seesion.
+                    session_destroy();
+                    //L'utilisateur est ensuite redirige sur la page d'accueil.
+                    header("refresh:2; url=../../index.php");
+                    exit();
                 }
                 else {
                     echo('<p style="font-size: 20px; font-weight: bold;">Vous ne pouvez pas résilier un contrat si vous n\'en avez pas.</p>');
@@ -60,12 +64,6 @@
             }
             catch(PDOExeption $pe){
                 echo 'ERREUR : '.$pe->getMessage();
-            }
-            //On affiche le message pendant 3 secondes avant de rediriger l'utilisateur
-            if(!empty($list[0]['contract_end'])){
-                echo "<p style='font-weight:bold; color:red;'>Opération réussie, votre contrat a bien été résilié !</p>";
-                header("refresh:3; url=../../index.php");
-                exit();
             }
         }
         /* On redirige le vendeur à l'accueil s'il a appuyé sur le bouton revenir */
