@@ -41,6 +41,16 @@ CREATE TABLE marketplace_order(
 	PRIMARY KEY(id_order)
 );
 
+CREATE TABLE marketplace_subscription(
+	id_subscription INT AUTO_INCREMENT, 
+    subscription_start DATE,
+    subscription_end DATE,
+    subscription_reduction INT,
+	id_customer INT,
+
+	PRIMARY KEY(id_subscription)
+);
+
 CREATE TABLE marketplace_customer(
 	id_customer INT AUTO_INCREMENT,
     id_user INT,
@@ -50,16 +60,6 @@ CREATE TABLE marketplace_customer(
 	FOREIGN KEY fk_(id_subscription) REFERENCES marketplace_subscription(id_subscription) ON DELETE CASCADE,
 
 	PRIMARY KEY(id_customer)
-);
-
-CREATE TABLE marketplace_subscription(
-	id_subscription INT AUTO_INCREMENT, 
-    subscription_start DATE,
-    subscription_end DATE,
-    subscription_reduction INT,
-	id_customer INT,
-
-	PRIMARY KEY(id_subscription)
 );
 
 CREATE TABLE marketplace_compagny(
@@ -102,7 +102,7 @@ VALUES(1,"Phoenix", 1, '{"January": 0,"February": 0,"March": 0,"April": 0,"May":
 /*Contract*/
 INSERT INTO `marketplace_contract`(`contract_start`, `contract_end`, `contract_commission`) VALUES ("2023-02-03","2024-02-03", "15");
 INSERT INTO `marketplace_contract`(`contract_start`, `contract_end`, `contract_commission`) VALUES ("2023-02-03","2025-02-03", "10");
-/*SET FOREIGN_KEY_CHECKS=0; -- to disable them*/
+SET FOREIGN_KEY_CHECKS=1; -- to disable them*/
 
 /*USER*/
 INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role`)
@@ -114,8 +114,8 @@ VALUES("steguo","sqsq","steg@gmail.com","customer");
 SELECT * FROM marketplace_user;
 
 /*Customer*/
-INSERT INTO `marketplace_customer`(`id_user`,`id_subscription`)
-VALUES(4,1);
+/*INSERT INTO `marketplace_customer`(`id_user`,`id_subscription`)
+VALUES(4,1);*/
 
 /*Subscription*/
 INSERT INTO `marketplace_subscription`(`subscription_start`, `subscription_end`, `subscription_reduction`, `id_customer`)

@@ -67,7 +67,7 @@
                 "lastSaleMonth": "January"
             }';
             
-            //On injecte le produit dans la base de donnée
+            //On injecte le produit dans la base de données
             $sql = "INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
             VALUES
             ('".$name."','".$price."','".$category."','".$stock."','".$desc."', 'img/compagny".$nameCompagny."/".$name."',".$idCompagny.",'".$monthJSON."');";

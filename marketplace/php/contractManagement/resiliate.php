@@ -2,7 +2,8 @@
     //session
     session_start();
     include "../function/sqlCmd.php";
-    //include
+    require '../../sql/db-config.php';
+    include 'actualContract.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,16 +28,11 @@
 </head>
 <body>
 
-
-    <nav>
-        <a href="../../index.php">Accueil</a>
-    </nav>
-
 	<h1>Résiliation du contrat</h1>
 	<form action= "resiliate.php" method="post">
 		<label>Etes vous sûrs de vouloir résilier votre contrat ?</label><br><br>
         <button name = "resilier" value= "resilier">Oui, je résilie mon contrat </button>
-        <button name = "revenir">  Non, je souhaite revenir en arrière</button>
+        <button name = "revenir">  Non, je souhaite revenir à l'accueil</button>
 	</form>
 </body>
 </html>
@@ -45,35 +41,21 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['resilier'])) {
             //SQL
-            require '../../sql/db-config.php';
+            
             try{
                 $options = [
                     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_EMULATE_PREPARES => false
                 ];
-    
-                $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS);  
-                $sql = "SELECT id_compagny FROM marketplace_compagny WHERE id_user = '".$_SESSION['id']."';";
-                $list = sqlSearch($PDO,$sql);
-                if (isset($list[0]['id_compagny'])){
-                    $idCompagny = $list[0]['id_compagny'];
-                    echo $idCompagny;
-                }
-
-                $sql = "SELECT contract_end FROM marketplace_contract
-                        WHERE id_compagny ="."$idCompagny".";";
-                $list = sqlSearch($PDO,$sql);
-                /* s'il en a un on l'update a la date indiquée */
                 if(!empty($list[0]['contract_end'])){
                     $sql = "DELETE marketplace_contract FROM marketplace_contract
-                    WHERE id_compagny ='".$idCompagny."';";
-                    //WHERE id_compagny =".$_SESSION['id_compagny'].";";			
+                    WHERE id_compagny ='".$idCompagny."';";			
                     $request = $PDO->prepare($sql);
                     $request->execute(); 
                 }
                 else {
-                    echo("Vous ne pouvez résilier un contrat si vous n'en avez pas.");
+                    echo('<p style="font-size: 20px; font-weight: bold;">Vous ne pouvez pas résilier un contrat si vous n\'en avez pas.</p>');
                 }   
             }
             catch(PDOExeption $pe){
@@ -82,12 +64,13 @@
             //On affiche le message pendant 3 secondes avant de rediriger l'utilisateur
             if(!empty($list[0]['contract_end'])){
                 echo "<p style='font-weight:bold; color:red;'>Opération réussie, votre contrat a bien été résilié !</p>";
-                header("refresh:3; url=../index.php");
+                header("refresh:3; url=../../index.php");
                 exit();
             }
         }
+        /* On redirige le vendeur à l'accueil s'il a appuyé sur le bouton revenir */
         elseif (isset($_POST['revenir'])) {
-            header('Location: ../../contract.php');
+            header('Location: ../../index.php');
             exit();
         }
     }
