@@ -10,11 +10,7 @@
 	<title>Renouvellement de contrat</title>
 </head>
 <body>
-
-    <nav>
-        <a href="../../contract.php">Contrat</a>
-    </nav>
-    
+  
     <?php
         require '../../sql/db-config.php';
         include 'actualContract.php';
@@ -27,7 +23,6 @@
 		<br><br>
 		<input type="submit" value="Valider">
 	</form>
-   
 </body>
 </html>
 <?php
@@ -46,13 +41,7 @@
                     ];
                     // on récupere l'idCompagny de l'utilisateur
                     $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS); 
-                    $sql = "SELECT id_compagny FROM marketplace_compagny WHERE id_user = '".$_SESSION['id']."';";
-                    $list = sqlSearch($PDO,$sql);
-                    $idCompagny = $list[0]['id_compagny'];
                     //On regarde s'il a un contrat
-                    $sql = "SELECT contract_end FROM marketplace_contract
-                            WHERE id_compagny ="."$idCompagny".";";
-                    $list = sqlSearch($PDO,$sql);
                     /* s'il en a un on l'update a la date indiquée */
                     if(!empty($list[0]['contract_end'])){
                         $sql ="UPDATE marketplace_contract
@@ -61,18 +50,15 @@
                         $request->execute(); 
                         echo($date_fin);
                         //On redirige l'utilisateur sur la page de connexion afin qu'il se connecte a son nouveau compte.
-                        header('Location: ../../contract.php');
+                        header('Location: ../../index.php');
                     } /* sinon on l'incite à se rediriger */
                     else{
-                        echo("Vous n'avez pas de contrat, veuillez d'abord en signer un si vous voulez le renouveler.");
+                        echo('<p style="font-size: 20px; font-weight: bold;">Vous ne pouvez pas renouveler un contrat si vous n\'en avez pas.</p>');
                     }
                 } 
                 catch(PDOExeption $pe){
                     echo 'ERREUR : '.$pe->getMessage();
                 }
-            }
-        else{
-            echo("Vous devez remplir tous les champs.");
-        }
     }
+}
 ?>

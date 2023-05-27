@@ -72,18 +72,27 @@
                 }
                 
                 // Met à jour la date de fin du contrat dans la base de données
+                //Crée le nouveau contrat
                 $sql ="INSERT INTO `marketplace_contract`(`contract_start`, `contract_end`, `contract_commission`, `id_compagny`)
-                VALUES ('".$date."','".$date_fin."',".$commission.",".$idCompagny.");";			
+                VALUES ('".$date."','".$date_fin."',".$commission.",".$idCompagny.");";
                 $request = $PDO->prepare($sql);
                 $request->execute();    
 
-                $sql = "SELECT id_contract FROM marketplace_contract WHERE id_compagny = ".$idCompagny." ORDER BY id_contract DESC";
+                /* récupere l'id du contrat */
+                $sql = "SELECT id_contract FROM marketplace_contract WHERE id_compagny = ".$idCompagny." ORDER BY id_contract DESC;";
                 $list = sqlSearch($PDO,$sql);
-                $idContract = $list[0]["id_contract"];
-
-                $sql = "UPDATE marketplace_compagny SET id_contract = ".$idContract." WHERE id_compagny =".$idCompagny;
-                $request = $PDO->prepare($sql);
-                $request->execute();   
+                if (isset($list[0]['id_contract'])){
+                    $idContract = $list[0]["id_contract"];
+                    /*L'update et l'accorde au vendeur */
+                    $sql = "UPDATE marketplace_compagny SET id_contract = ".$idContract." WHERE id_compagny =".$idCompagny;
+                    $request = $PDO->prepare($sql);
+                    $request->execute(); 
+                    echo('<p style="font-size: 20px; font-weight: bold;">Votre contrat a bien été signé.</p>');
+                    header("refresh:2; url=../../index.php");
+                } 
+                else {
+                    echo("Erreur dans le contrat");
+                } 
             }
             catch(PDOExeption $pe){
                 echo 'ERREUR : '.$pe->getMessage();

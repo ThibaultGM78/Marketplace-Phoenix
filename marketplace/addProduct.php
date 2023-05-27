@@ -3,7 +3,7 @@
     session_start();
     $_SESSION['id_compagny'] = 1;
     //include
-    include "php/contractManagement/saveProduct.php";
+    include "php/saveProduct.php";
 ?>
 <!DOCTYPE html>
 <html>
