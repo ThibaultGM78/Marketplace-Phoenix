@@ -1,2 +1,2 @@
-Barre de recherche dans toute les pages : Reglée
-Historique que qd connecte : Reglée
+Barre de recherche dans toute les pages : Fait
+Historique que qd connecte : Fait

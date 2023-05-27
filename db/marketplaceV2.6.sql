@@ -114,8 +114,8 @@ VALUES("steguo","sqsq","steg@gmail.com","customer");
 SELECT * FROM marketplace_user;
 
 /*Customer*/
-/*INSERT INTO `marketplace_customer`(`id_user`,`id_subscription`)
-VALUES(4,1);*/
+INSERT INTO `marketplace_customer`(`id_user`,`id_subscription`)
+VALUES(4,1);
 
 /*Subscription*/
 INSERT INTO `marketplace_subscription`(`subscription_start`, `subscription_end`, `subscription_reduction`, `id_customer`)
