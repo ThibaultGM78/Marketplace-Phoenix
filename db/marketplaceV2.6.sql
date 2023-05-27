@@ -141,7 +141,7 @@ VALUES("Iphone 8",350,"telephone",18,"Telephone un peu mieux","img/compagny/CYTE
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
 VALUES("Iphone 10",650,"telephone",20,"Telephone 2 fois mieux que le 6","img/compagny/CYTEL/iphone10.jpg", 1, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
-VALUES("Pull Noir",20,"Pull",10,"matière : coton, confortable","img/compagny/Pull.jpg", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
+VALUES("Pull Noir",20,"Pull",10,"matière : coton, confortable","img/compagny/Pull.jpg", 2, '{"January": 7,"February": 12,"March": 9,"April": 3,"May": 5,"June": 5,"July": 6,"August": 8,"September": 14,"October": 12,"November": 10,"December": 11,"lastSaleMonth": "10000"}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
 VALUES("Iphone 6",90,"telephone",16,"J'adore les pates et vous ?","img/compagny/CYTEL/iphone6.jpg", 3, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
@@ -151,7 +151,7 @@ VALUES("Iphone 14",900,"telephone",21,"Smartphone dernière génération de la m
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
 VALUES("PS5",550,"console",7,"Console de salon SONY dernière generation","img/compagny/MaximePull/PS5", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
-VALUES("TV Samsung Oled",950,"Television",7,"TV dernière generation commercialisée par Samsung","img/compagny/MaximePull/tvsamsung", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
+VALUES("TV Samsung Oled",950,"Television",7,"TV dernière generation commercialisée par Samsung","img/compagny/MaximePull/tvsamsung", 2, '{"January": 7,"February": 12,"March": 9,"April": 3,"May": 5,"June": 5,"July": 6,"August": 8,"September": 14,"October": 12,"November": 10,"December": 11,"lastSaleMonth": "10000"}');
 select * from marketplace_product;
 
 /*Partie livreur*/
