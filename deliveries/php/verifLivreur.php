@@ -32,12 +32,13 @@
             $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS);   
 
             //On verifie si le login existe
-            $sql = "SELECT id_user FROM marketplace_livreur WHERE nom= '".$login."';";
+            $sql = "SELECT id_Livreur FROM marketplace_Livreur WHERE nom= '".$login."';";
             $list = sqlSearch($PDO,$sql);
 
             if($list != null){
                 $errors['login'] = "error";
             }
+            
         }
         catch(PDOExeption $pe){
             echo 'ERREUR : '.$pe->getMessage();

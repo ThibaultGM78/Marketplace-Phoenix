@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    /*session_start();*/
     include "php/verifConnection.php";
     include "php/function/field.php"
 ?>
@@ -46,7 +46,7 @@
 
     <div class="d-flex justify-content-center align-items-center login-container">
 
-        <form method="post" class="login-form text-center" action="livreur.php">
+        <form method="post" class="login-form text-center">
 
             <?php
                 $classField = 'mb-3';

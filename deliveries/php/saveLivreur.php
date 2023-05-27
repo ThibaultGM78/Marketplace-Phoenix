@@ -16,7 +16,7 @@
         $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS);   
 
         //On injecte le produit dans la base de donnée
-        $sql = "INSERT INTO `marketplace_livreur`(`nom`, `typePermis`)
+        $sql = "INSERT INTO `marketplace_Livreur`(`nom`, `typePermis`)
         VALUES
         ('".$login."','".$permit."');";
 

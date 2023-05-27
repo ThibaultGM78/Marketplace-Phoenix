@@ -37,9 +37,9 @@
 <body>
     <header>
         <?php
-            if(isset($_SESSION['login'])){
+            /*if(isset($_SESSION['login'])){
                 echo "<p class='lead text-muted'>Login :".$_SESSION['login']."</p>";
-            }
+            }*/
         ?>
         <h1>Livreur</h1>
         <hr>

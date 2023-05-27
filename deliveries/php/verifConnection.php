@@ -1,6 +1,8 @@
 <?php
+    session_start();
 
     include 'php/function/sqlCmd.php';
+    //include 'js/alert.js';
 
     //On creer un tableau ressencant les erreurs potentielles.
     $errors = [];
@@ -25,11 +27,13 @@
 
             $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS);   
 
-            $sql = "SELECT * FROM marketplace_livreur WHERE nom = '".$login."';";
+            $sql = "SELECT * FROM marketplace_Livreur WHERE nom = '".$login."';";
             $list = sqlSearch($PDO,$sql);
 
             if($list == null){
                 $errors['login'] = "error";
+                echo '<script src="js/alert.js"></script>';
+                echo '<script> showMessage(); </script>';
             }
         }
         catch(PDOExeption $pe){
@@ -38,8 +42,9 @@
 
         if(empty($errors)){
             $_SESSION['login'] = $login;
+            $_SESSION['permis'] = $list[0]['typePermis'];
 
-            header('Location: index.php');//L'utilisateur est redirige sur la page d'accueil du site.
+            header('Location: livreur.php');//L'utilisateur est redirige sur la page d'accueil du site.
         }
     }
 ?>

@@ -23,7 +23,7 @@
     $chaine = "'".$_SESSION['etape'][0]."'";
 
     // concatener toutes les adresses des livraisons, afin de la supprimer de la data base
-    for ($i=0; $i<=$_SESSION['nb_adresse']; $i++)
+    for ($i=0; $i<$_SESSION['nb_adresse']; $i++)
     {
         $chaine .= ",'".$_SESSION['etape'][$i]."'";
     }

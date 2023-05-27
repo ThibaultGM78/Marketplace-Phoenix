@@ -82,7 +82,6 @@
                 <option value="B">Permis B</option>
                 <option value="A">Permis A</option>
                 <option value="C">Permis C</option>
-                <option value="D">Permis D</option>
             </select>
 
             <button type="submit" class="btn mt-5 btn-lg btn-custom btn-block text-uppercase">inscription</button>

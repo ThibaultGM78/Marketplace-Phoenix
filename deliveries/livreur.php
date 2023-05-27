@@ -3,166 +3,10 @@
 // file containing the parameters to connect to the sql database
 require 'sql/db-config.php';
 
+include "Retrieveaddress.php";
+include "optimizeroute.php";
+
 session_start();
-$_SESSION['etape'] = array();
-$_SESSION['colis'] = array();
-$_SESSION['nb_adresse'];
-$_SESSION['duree_trajet'];
-
-
-
-
-// function to retrieve the number of products for an address
-function recuperer_nb_produit($chaine){
-
-    // We remove the characters ""","}" , "{" and "'".
-    $caracter = array("\"", "{", "}");
-    $chaine = str_replace($caracter, "", $chaine);
-
-    // separate the character string into several delimited pieces using ","
-    $basketTab = explode(",",$chaine);
-    
-    // know the size of the array obtained
-    $taille = count($basketTab);
-
-    $nb_produit = 0;
-
-    // loop to retrieve the number of products needed for this address
-    for ($i=0; $i<$taille; $i++)
-    {
-        $var = explode(":",$basketTab[$i]);
-        $nb_produit += (int)$var[1];
-    }
-    
-    return $nb_produit;
-}
-
-
-
-
-
-
-
-function livreur($req, $PDO){
-
-    $i = 1;
-
-    $adresse[0] = 'Av.duParc,95000Cergy';
-    $colis[0] = '';
-
-    // loop to retrieve all delivery addresses in the database and put them in an array
-    while ($donnees = $req->fetch()){
-
-        $adresse[$i] = $donnees['purchase_adress'];
-        $colis[$i] = $donnees['purchase_basket'];
-        $i++;
-    }
-
-
-
-
-    // get address nb
-    $nb_adresse = $i;
-
-    $duree_trajet_min = NULL; 
-
-
-    $temp_livraison = (int)0;
-    $nombre_colis_total = (int)0;
-
-
-    $j = 0;
-
-    $_SESSION['duree_trajet'] = 0;
-
-    $indice = 0;
-
-    // continues until the time is less than the set time
-    $continue = 1;
-
-    while (($continue == 1) && ($nb_adresse != 0))
-    {
-
-        // put the first address of the base = starting address
-        $_SESSION['etape'][$j] = $adresse[$indice];
-        $_SESSION['colis'][$j] = $colis[$indice];
-
-        if ($indice != $nb_adresse-1)
-        {
-            $adresse[$indice] = $adresse[$nb_adresse-1];
-            $colis[$indice] = $colis[$nb_adresse-1];
-        }
-        
-        $nb_adresse --;
-
-        for ($i = 0; $i < $nb_adresse; $i++)
-        {
-
-          // Fetch content from API
-          include 'api/googleApi.php';
-          $url = "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=".$_SESSION['etape'][$j]."&origins=".$adresse[$i]."&units=imperial&key=".$key;
-          $data = file_get_contents($url);
-
-          // Convert content to JSON format
-          $json = json_decode($data,true);
-
-          // Check if the conversion to json format went well, if there is a problem, we write this error message
-          if ($json === null && json_last_error() !== JSON_ERROR_NONE) {
-              echo 'Erreur lors de la conversion en JSON : ' . json_last_error_msg();
-          } 
-
-          // get trip duration and convert it to int
-          $duree_trajet = (int)$json['rows'][0]['elements'][0]['duration']['value'];              
-
-          // compares the duration of the journey with the shortest duration
-          if (($duree_trajet_min == NULL) || ($duree_trajet_min > $duree_trajet))
-          {
-              $duree_trajet_min = $duree_trajet;
-              $indice = $i;
-          }
-
-        }
-
-
-        $temp_livraison += $duree_trajet_min;
-        
-        // retrieve the number of parcels from the address to add and add it to the number of parcels already modified
-        $nombre_colis_total += recuperer_nb_produit($colis[$indice]);
-
-        
-        // if the number of packages is greater than the maximum quantity authorized for the vehicle then we stop
-        if ($nombre_colis_total > 15)
-        {
-            $continue = 0;
-        }
-        
-
-        // if the estimated travel time is greater than 15,000 seconds then we stop
-        else if ($temp_livraison > 15000)
-        {
-            // stop
-            $continue = 0;
-        }
-
-        else if (($temp_livraison < 15000) && ($nombre_colis_total < 15))
-        {
-            $j++;
-            $duree_trajet_min = NULL;
-            $_SESSION['duree_trajet'] = $temp_livraison;
-        }
-
-
-    }
-
-    $_SESSION['nb_adresse'] = $j;
-    
-    
-}
-
-
-
-
-
 
 
 try
@@ -176,7 +20,6 @@ catch(Exception $e)
 {
     die('Erreur : '.$e->getMessage());
 }
-
 
 // query to update addresses by removing spaces
 $req_supp_espace = $PDO->prepare("UPDATE marketplace_purchase SET purchase_adress = REPLACE(purchase_adress, ' ', '')");
@@ -193,15 +36,46 @@ $req_supp_espace->execute();
 
 $req_supp_espace->closeCursor();
 
-
-
 //prepare the request
 $req = $PDO->prepare('SELECT * from marketplace_purchase order by purchase_date');
 
+//request for unsebscribed customers
+$requnsub = $PDO->prepare('SELECT mp.purchase_adress, mp.purchase_basket
+FROM marketplace_purchase AS mp
+LEFT JOIN marketplace_customer AS mc ON mp.id_customer = mc.id_customer
+WHERE mc.id_customer IS NULL;');
+
+
+//request for subscribed customers
+$reqsub = $PDO -> prepare('SELECT mp.purchase_adress,  mp.purchase_basket
+FROM marketplace_customer AS mc
+JOIN marketplace_purchase AS mp ON mc.id_customer = mp.id_customer
+JOIN marketplace_subscription AS ms ON mc.id_subscription = ms.id_subscription
+');
+
+
 //send list of parameters
 $req->execute();
+$reqsub->execute();
+$requnsub->execute();
 
-livreur($req,$PDO);
+switch ($_SESSION['permis']) {
+    case "A":
+        $nb_max_commandes = 3;
+        break;
+    case "B":
+        $nb_max_commandes = 15;
+        break;
+    case "C":
+        $nb_max_commandes = 40;
+        break;
+    default:
+        break;
+}
+
+listeCommandes($reqsub, $requnsub, $nb_max_commandes ,$PDO);
+
+livreur();
 
 if (!empty($_SESSION['etape'][0]))
 {
@@ -209,10 +83,10 @@ if (!empty($_SESSION['etape'][0]))
   // allows to write the different stages of delivery
   echo "<h3> Les différentes étapes de livraison sont :</h3>";
   echo "<ol>";
-  echo "<li>".$_SESSION['etape'][0]."</li>";
-  for ($i=1; $i<=$_SESSION['nb_adresse']; $i++)
+  echo "<li><b>".$_SESSION['etape'][0]."</b></li>";
+  for ($i=1; $i<$_SESSION['nb_adresse']; $i++)
   {
-      echo "<li>".$_SESSION['etape'][$i]."</li>";
+      echo "<li><b>".$_SESSION['etape'][$i]."</b></li>";
       
 
       // We remove the characters ""","}" , "{" and "'".
@@ -264,9 +138,9 @@ if (!empty($_SESSION['etape'][0]))
 
 }
 
-
+/*
 //Arreter le traitement de la requette MySQL
-$req->closeCursor();
+$req->closeCursor();*/
 
 ?>
 
@@ -310,7 +184,7 @@ $req->closeCursor();
       <strong>Start:</strong>
       <select id="start" class="form-control mb-2">
         <?php
-          for ($i=0; $i<=$_SESSION['nb_adresse']; $i++) {
+          for ($i=0; $i<$_SESSION['nb_adresse']; $i++) {
             echo "<option value=".$_SESSION['etape'][$i].">Etape ".($i+1)."</option>";
           }
         ?>
@@ -318,7 +192,7 @@ $req->closeCursor();
       <strong>End:</strong>
       <select id="end" class="form-control mb-2">
         <?php
-            for ($i=0; $i<=$_SESSION['nb_adresse']; $i++) {
+            for ($i=0; $i<$_SESSION['nb_adresse']; $i++) {
                 echo "<option value=".$_SESSION['etape'][$i].">Etape ".($i+1)."</option>";
             }
         ?>
@@ -329,5 +203,9 @@ $req->closeCursor();
       <div id="sidebar"></div>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB04_7zWKon7pqwnfihrhWGdKusU5fUGc4&callback=initMap&v=weekly" defer></script>
+    <div>
+      <br><br>
+    </div>
+    <?php include '../marketplace/structure/footer.php'; ?>
   </body>
 </html>
