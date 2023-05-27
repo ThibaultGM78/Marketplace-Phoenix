@@ -16,18 +16,11 @@
         $months = array_merge(array_slice($months, $current_month_index + 1), array_slice($months, 0, $current_month_index + 1));
 
         // Initialisez les tableaux de données pour le graphique
-        $chart_labels = [];
-        $chart_data = [];
-
-        // Bouclez sur les données et ajoutez-les aux tableaux de données pour le graphique
-        foreach ($months as $month) {
-            $sales = (int) $data[$month];
-            $chart_labels[] = $month;
-            $chart_data[] = $sales;
-        }
+        $chart_labels = $months;
+        $chart_data = array_values($data);
 
         // Créer le graphique avec Chart.js
-        echo '<div style="width:50%;">
+        echo ' <div class="centered">
             <canvas id="myChart'.$idGraph.'"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
@@ -37,6 +30,7 @@
                     data: {
                         labels: ' . json_encode($chart_labels) . ',
                         datasets: [{
+                            label : "Hide",
                             data: ' . json_encode($chart_data) . ',
                             borderColor: \'rgb(75, 192, 192)\',
                             borderWidth: 1
@@ -48,18 +42,19 @@
                             text: \'Sales by Month\'
                         },
                         legend: {
-                            display: false
+                            display: true
                         }
                     }
                 });
             </script>
         </div>';
-    }
+            }
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>MarketPlace</title>
+    <title>MarketPlace</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,8 +70,9 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 </head>
-    <body>
-        <?php
+
+<body>
+    <?php
             include 'structure/header.php';
     
 
@@ -95,8 +91,8 @@
                 // Décodez la chaîne JSON en un tableau associatif
                 $data = json_decode($list[0]["compagny_turnover"], true);
                 $idCompagny = $list[0]["id_compagny"];
-
-                echo "<h3>Chiffre d'affaire</h3>";
+                echo ("<div class=\"centered\">");
+                echo "<h3>Chiffre d'affaires</h3>";
                 $idGraph = 0;
                 displayGraph($data,$idGraph);
 
@@ -116,7 +112,7 @@
                     displayGraph($data,$idGraph);
                    
                 }
-            
+                echo "</div>";
             }  
             catch(PDOExeption $pe){
                 echo 'ERREUR : '.$pe->getMessage();
@@ -124,5 +120,6 @@
     
             include 'structure/footer.php';
         ?>
-    </body>
+</body>
+
 </html>
