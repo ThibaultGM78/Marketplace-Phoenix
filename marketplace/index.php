@@ -51,7 +51,7 @@
                         <a href="productDetails.php?id=7"><button class="btn btn-3">Voir le produit</button></a>
                     </div>
                     <div class="carousel-item">
-                        <button class="btn btn-3">Voir le produit</button>
+                    <a href="productDetails.php?id=9"><button class="btn btn-3">Voir le produit</button></a>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
