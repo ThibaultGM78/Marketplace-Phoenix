@@ -27,7 +27,8 @@
 			else{
 				$contractEnd = "Aucun contrat";
 			}
-			echo("<p>Vous avez un contrat valable jusqu'au : ".$contractEnd."</p>");
+			echo "<p>Vous avez un contrat valable jusqu'au : <span style='color: red;'>".$contractEnd."</span></p>";
+
 		}
 		//--
 		

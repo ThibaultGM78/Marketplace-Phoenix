@@ -121,11 +121,7 @@
                             <a class="dropdown-item" href="../../php\subscriptionManagement\suscribe.php">Souscrire</a>
                         </div>
                     </li>';
-                }
-                ?>
-
-                        <?php
-        
+                }     
                 if(empty($_SESSION['login'])){
                     echo '<li><a class="nav-link" aria-current="page" href="../../connection.php">Connexion</a></li>';
                 }
@@ -151,19 +147,58 @@
     <?php
         require '../../sql/db-config.php';
     ?>
-    <h1>Renouvellement de contrat</h1>
-    <?php
-        include 'actualContract.php';
+    <div class="centered">
+        <h1>Renouvellement de contrat</h1>
+        <?php
+            include 'actualContract.php';
+        ?>
+        <form action="renewal.php" method="post">
+            <div class="form-group">
+                <label for="date_fin"><b>Jusqu'à quand voulez-vous renouveler votre contrat ?</b></label>
+                <input type="date" id="date_fin" <?php echo 'min="'.$contractEnd.'"'?> name="date_fin"
+                    class="form-control">
+            </div>
+            <br><br>
+            <button type="submit" class="button">Valider</button>
+        </form>
+        <?php
+            // Vérifie si des données ont été soumises
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if ($_POST["date_fin"] != "0000-00-00"){
+                    $date_fin = $_POST["date_fin"];
+                    // Gérer les actions des boutons
+                        //SQL
+                        require '../../sql/db-config.php';
+                        try{
+                            $options = [
+                                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                                PDO::ATTR_EMULATE_PREPARES => false
+                            ];
+                            // on récupere l'idCompagny de l'utilisateur
+                            $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS); 
+                            //On regarde s'il a un contrat
+                            /* s'il en a un on l'update a la date indiquée */
+                            if(!empty($list[0]['contract_end'])){
+                                $sql ="UPDATE marketplace_contract
+                                SET contract_end ="."'".$date_fin."'"."WHERE id_compagny = '".$idCompagny."';";		
+                                $request = $PDO->prepare($sql);
+                                $request->execute(); 
+                                echo($date_fin);
+                                //On redirige l'utilisateur sur la page de connexion afin qu'il se connecte a son nouveau compte.
+                                echo "<script type='text/javascript'>document.location.replace('../../index.php');</script>";
+                            } /* sinon on l'incite à se rediriger */
+                            else{
+                                echo('<p style="font-size: 20px; color: red; font-weight: bold;">Vous ne pouvez pas renouveler un contrat si vous n\'en avez pas.</p>');
+                            }
+                        } 
+                        catch(PDOExeption $pe){
+                            echo 'ERREUR : '.$pe->getMessage();
+                        }
+            }
+        }
     ?>
-    <form action="renewal.php" method="post">
-        <div class="form-group">
-            <label for="date_fin">Jusqu'à quand voulez-vous renouveler votre contrat ?</label>
-            <input type="date" id="date_fin" <?php echo 'min="'.$contractEnd.'"'?> name="date_fin" class="form-control">
-        </div>
-        <br><br>
-        <button type="submit" class="btn btn-primary">Valider</button>
-    </form>
-
+    </div>
 
 
     <footer id="footer">
@@ -194,40 +229,3 @@
 </body>
 
 </html>
-<?php
-    // Vérifie si des données ont été soumises
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if ($_POST["date_fin"] != "0000-00-00"){
-            $date_fin = $_POST["date_fin"];
-            // Gérer les actions des boutons
-                //SQL
-                require '../../sql/db-config.php';
-                try{
-                    $options = [
-                        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                        PDO::ATTR_EMULATE_PREPARES => false
-                    ];
-                    // on récupere l'idCompagny de l'utilisateur
-                    $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS); 
-                    //On regarde s'il a un contrat
-                    /* s'il en a un on l'update a la date indiquée */
-                    if(!empty($list[0]['contract_end'])){
-                        $sql ="UPDATE marketplace_contract
-                        SET contract_end ="."'".$date_fin."'"."WHERE id_compagny = '".$idCompagny."';";		
-                        $request = $PDO->prepare($sql);
-                        $request->execute(); 
-                        echo($date_fin);
-                        //On redirige l'utilisateur sur la page de connexion afin qu'il se connecte a son nouveau compte.
-                        header('Location: ../../index.php');
-                    } /* sinon on l'incite à se rediriger */
-                    else{
-                        echo('<p style="font-size: 20px; font-weight: bold;">Vous ne pouvez pas renouveler un contrat si vous n\'en avez pas.</p>');
-                    }
-                } 
-                catch(PDOExeption $pe){
-                    echo 'ERREUR : '.$pe->getMessage();
-                }
-    }
-}
-?>
