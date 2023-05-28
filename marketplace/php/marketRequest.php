@@ -1,9 +1,3 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css"> 
-</head>
 <?php
 
     include 'php/function/sqlCmd.php';
@@ -22,20 +16,21 @@
             $id = $donnees['id_product'];
             $unitePrice = $donnees['product_price'] * reduction($PDO);
             ?>
-            <div class="card mb-4" style="width: 18rem;">
-                <a href="productDetails.php?id=<?php echo $id; ?>">
-                    <img class="card-img-top" src="<?php echo $donnees['product_img']; ?>" alt="<?php echo $donnees['product_name']; ?>">
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $donnees['product_name']; ?></h5>
-                    <p class="card-text"><?php echo $donnees['product_desc']; ?></p>
-                    <p class="card-text"><?php echo $unitePrice; ?> €</p>
-                </div>
-                <div class="card-footer d-flex justify-content-center">
-                    <a href="productDetails.php?id=<?php echo $id; ?>" class="btn btn-dark">Voir plus</a>
-                </div>
-            </div>
-            <?php
+<div class="card mb-4" style="width: 18rem;">
+    <a href="productDetails.php?id=<?php echo $id; ?>">
+        <img class="card-img-top" src="<?php echo $donnees['product_img']; ?>"
+            alt="<?php echo $donnees['product_name']; ?>">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title"><?php echo $donnees['product_name']; ?></h5>
+        <p class="card-text"><?php echo $donnees['product_desc']; ?></p>
+        <p class="card-text"><?php echo $unitePrice; ?> €</p>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+        <a href="productDetails.php?id=<?php echo $id; ?>" class="btn btn-dark">Voir plus</a>
+    </div>
+</div>
+<?php
             $i++;
         }
         echo '</div>';
