@@ -1,29 +1,4 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/searchbar.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <!-- pour les icons -->
-</head>
-
-<body>
     <!-- navbar top -->
     <div class="container">
         <div class="navbar-top">
@@ -47,33 +22,26 @@
                         </div>';
                     }
                     else{
-
-                        
-
                         echo '
                         <div class="input-box">
-                            <form method="post" onsubmit="return validateForm()" action="market.php">
-                                <div class="mb-3">
-                                    <input type="text"  id="category" name="category" placeholder="Rechercher...">
-                                    <span class="icon">
-                                        <i class="uil uil-search search-icon"></i>';
-                                        
-                                        
-                        if(!empty($_SESSION['id'])){
-                            echo '<a href="../deliveries/php/history.php"><i><img src="img/historique.png" alt="" width="25px"></i></a>';
-                        }
-                                        
-                        echo               '<a id="decal" href="basket.php"><i><img src="img/shopping-cart.png"  alt="" width="30px"></i></a>
-                                    </span>
-                                    <i class="uil uil-times close-icon"></i>
-                                </div>
+                            <form method="post" onsubmit="return validateForm()" action="market.php" class="mb-3">
+                                <input type="text" id="category" name="category" placeholder="Rechercher...">
+                                <span class="icon">
+                                    <i class="uil uil-search search-icon"></i>';
+
+                                if(!empty($_SESSION['id'])){
+                                    echo '<a href="../deliveries/php/history.php"><i><img src="img/historique.png" alt="" width="25px"></i></a>';
+                                }
+
+                                echo '<a id="decal" href="basket.php"><i><img src="img/shopping-cart.png"  alt="" width="30px"></i></a>
+                                </span>
+                                <i class="uil uil-times close-icon"></i>
                             </form>
                         </div>';
                     }
                     ?>
             </div>
         </div>
-
     </div>
     </div>
     <!-- navbar top -->
@@ -151,4 +119,3 @@
         searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
         closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
     </script>
-</body>
