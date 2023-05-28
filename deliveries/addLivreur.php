@@ -53,7 +53,6 @@
             border-radius: 0.25rem;
         }
     </style>
-    <script src="js/addUser.js"></script>
 </head>
 
 <body>

@@ -75,7 +75,7 @@ switch ($_SESSION['permis']) {
 
 listeCommandes($reqsub, $requnsub, $nb_max_commandes ,$PDO);
 
-livreur();
+//livreur();
 
 if (!empty($_SESSION['etape'][0]))
 {
@@ -135,6 +135,9 @@ if (!empty($_SESSION['etape'][0]))
     echo "<input type='submit' value='Livraison terminé'>";
     echo "</form>";
 
+    echo "<form method='post' action='archive.php'>";
+    echo "<input type='submit' value='Optimiser le Trajet'>";
+    echo "</form>";
 
 }
 

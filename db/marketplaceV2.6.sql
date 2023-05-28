@@ -147,11 +147,11 @@ VALUES("Iphone 6",90,"telephone",16,"J'adore les pates et vous ?","img/compagny/
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
 VALUES("Iphone 8",360,"telephone",18,"Telephone sucre au sucre","img/compagny/CYTEL/iphone8.jpg", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
-VALUES("Iphone 14",900,"telephone",21,"Smartphone dernière génération de la marque Apple","img/compagny/MaximePull/Iphone14", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
+VALUES("Iphone 14",900,"telephone",21,"Smartphone dernière génération de la marque Apple","img/compagny/MaximePull/iphone14.jpg", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
-VALUES("PS5",550,"console",7,"Console de salon SONY dernière generation","img/compagny/MaximePull/PS5", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
+VALUES("PS5",550,"console",7,"Console de salon SONY dernière generation","img/compagny/MaximePull/ps5.jpg", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
-VALUES("TV Samsung Oled",950,"Television",7,"TV dernière generation commercialisée par Samsung","img/compagny/MaximePull/tvsamsung", 2, '{"January": 7,"February": 12,"March": 9,"April": 3,"May": 5,"June": 5,"July": 6,"August": 8,"September": 14,"October": 12,"November": 10,"December": 11,"lastSaleMonth": "10000"}');
+VALUES("TV Samsung Oled",950,"Television",7,"TV dernière generation commercialisée par Samsung","img/compagny/MaximePull/tvsamsung.jpg", 2, '{"January": 7,"February": 12,"March": 9,"April": 3,"May": 5,"June": 5,"July": 6,"August": 8,"September": 14,"October": 12,"November": 10,"December": 11,"lastSaleMonth": "10000"}');
 select * from marketplace_product;
 
 /*Partie livreur*/
@@ -234,3 +234,4 @@ select * from marketplace_purchase;
 select * from marketplace_user;
 select * from marketplace_customer;
 select * from marketplace_archive;
+select * from marketplace_product;

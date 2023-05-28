@@ -28,10 +28,32 @@
     <div class="content">
         <div class="col-4 offset-4">
 
+            <!--Barre de recherche-->
+            <h2>Rechercher un produit</h2>    
+            <form method="post" onsubmit="return validateForm()">
+                <div class="mb-3">
+                    <label for="category" class="form-label">Categorie</label>
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Entrez la categorie du produit">
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>           
+            <br>
+
+            <!--Selection de produit -->
             <?php include "php/marketRequest.php" ?>
 
         </div>
     </div>
+    
+    
+    <!--
+    <div class="content">
+        <div class="col-4 offset-4">
+
+            <?php include "php/marketRequest.php" ?>
+
+        </div>
+    </div> -->
 
     <?php  include 'structure/footer.php'; ?>
 </body>

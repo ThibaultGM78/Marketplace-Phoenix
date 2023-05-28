@@ -65,7 +65,7 @@
                     $nBuy = $product[1];
 
                     //Si l'element a été achete
-                    //Lorque l'on retire de panier les lement il ne s'efface pas mais tombe a 0;
+                    //Lorque l'on retire de panier les element il ne s'efface pas mais tombe a 0;
                     if($nBuy > 0){
 
                         $sql = 'select * from marketplace_product where id_product='.$productId.';';

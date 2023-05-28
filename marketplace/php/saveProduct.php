@@ -11,6 +11,7 @@
         $category = $_POST['category'];
         $stock = $_POST['stock'];
         $desc =  $_POST['desc'];
+        $img =  $_POST['img'];
        
         //SQL
         require 'sql/db-config.php';
@@ -42,12 +43,16 @@
             $dossier = 'img/compagny/'.$nameCompagny;
             if (!file_exists($dossier)) {
                 mkdir($dossier, 0777, true);
-            } 
+            }
+
+
+            // Récupérer le nom du fichier
+            $nomImage = $_FILES['img']['name'];
 
             //On sauvegarde l'image dans le dossier image de l'entreprise
             $imgTmp = $_FILES['img']['tmp_name'];
             if (isset($imgTmp)) { 
-                $imgPath = 'img/compagny/'.$nameCompagny.'/'.$name.'.png' ;
+                $imgPath = 'img/compagny/'.$nameCompagny.'/'.$nomImage ;
                 move_uploaded_file($imgTmp, $imgPath);
             }
 
@@ -70,7 +75,7 @@
             //On injecte le produit dans la base de données
             $sql = "INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
             VALUES
-            ('".$name."','".$price."','".$category."','".$stock."','".$desc."', 'img/compagny/".$nameCompagny."/".$name."',".$idCompagny.",'".$monthJSON."');";
+            ('".$name."','".$price."','".$category."','".$stock."','".$desc."', 'img/compagny/".$nameCompagny."/".$nomImage."',".$idCompagny.",'".$monthJSON."');";
 
             $request = $PDO->prepare($sql);
             $request->execute();    
@@ -80,6 +85,6 @@
         }
 
         //On redirige l'utilisateur sur la page de connexion afin qu'il se connecte a son nouveau compte.
-        header('Location: index.php');
+        //header('Location: index.php');
     } 
 ?>
