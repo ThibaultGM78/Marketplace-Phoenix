@@ -21,15 +21,12 @@
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
-
 <body>
 
     <?php include 'structure/header.php' ?>
 
     <div class="d-flex justify-content-center align-items-center login-container">
-
         <form method="post" class="login-form text-center">
-
             <?php
                 $classField = 'mb-3';
                 $classLabel = 'form-label';

@@ -1,6 +1,7 @@
 .login-container{
-  height: 100vh;
+  height: 80vh;
   width: 100%;
+  padding-bottom: 15px;
 }
 .login-form{
   margin: auto;
@@ -22,8 +23,8 @@
 }
 
 .form-control:focus{
-  border-color:#723dbe;
-  box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+  border-color:#ff3f3f;
+  box-shadow: 0 0 0 0.2rem #8b0000;
 }
 .btn-custom{
   background: rgb(197, 157, 111);
@@ -42,5 +43,5 @@
   color:#fff;
 }
 .btn-custom:focus{
-  box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+  box-shadow: 0 0 0 0.2rem rgba(189, 42, 42, 0.25);
 }
