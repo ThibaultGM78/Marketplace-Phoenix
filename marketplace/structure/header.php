@@ -21,6 +21,16 @@
                         <i class="uil uil-times close-icon"></i>
                         </div>';
                     }
+                    else if($_SESSION['role'] == 'compagny'){
+                        echo '<div class="input-box">
+                        <input type="text" placeholder="Rechercher...">
+                        <span class="icon">
+                            <i class="uil uil-search search-icon"></i>
+                            <a href=""><i><img src="" id="decal" alt="" width="30px"></i></a>
+                        </span>
+                        <i class="uil uil-times close-icon"></i>
+                        </div>';
+                    }
                     else{
                         echo '
                         <div class="input-box">
