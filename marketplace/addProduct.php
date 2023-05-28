@@ -28,7 +28,7 @@
     <?php
             include 'structure/header.php'
         ?>
-    <div>
+    <div class="centered">
         <!--Formulaire d'ajout de produit-->
         <h2>Form</h2>
         <form method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
