@@ -32,10 +32,10 @@
                                     <i class="uil uil-search search-icon"></i>';
 
                                 if(!empty($_SESSION['id'])){
-                                    echo '<a href="../deliveries/php/history.php"><i><img src="img/historique.png" alt="" width="25px"></i></a>';
+                                    echo '<a href="../deliveries/php/history.php"><i><img src="img/historique.png" alt="" width="24px"></i></a>';
                                 }
 
-                                echo '<a id="decal" href="basket.php"><i><img src="img/shopping-cart.png"  alt="" width="30px"></i></a>
+                                echo '<a id="decal2" href="basket.php"><i><img src="img/shopping-cart.png"  alt="" width="32px"></i></a>
                                 </span>
                                 <i class="uil uil-times close-icon"></i>
                             </form>

@@ -102,6 +102,9 @@
   #decal{
     margin-right: 90px;
   }
+  #decal2{
+    margin-right: 125px;
+  }
   .search-icon{
     color: #000000;
     transform: translateY(-50%) rotate(90deg);
