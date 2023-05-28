@@ -150,10 +150,11 @@
 
 
     <form method="post">
+        <div class="centered">
         <h1>Souscription abonnement Phoenix</h1>
 
         <label for="nMonth">Nombre de mois:</label>
-        <input type="number" id="nMonth" name="nMonth" min="1" max="12" required>
+        <input style="border-width: 1px;border-style: solid; border-color : black; width:5%;" type="number" id="nMonth" name="nMonth" min="1" max="12" required>
         </br>
 
         <label for="reduction">Pourcentage de reduction:</label>
@@ -165,6 +166,7 @@
 
         <button type="submit">Valider</button>
     </form>
+    </div>
 
 
     <footer id="footer">
