@@ -70,3 +70,6 @@ input{
   pointer-events: auto;
   transform: translateY(-50%) rotate(180deg);
 }
+.input-box form {
+  padding-top: 15px; /* ajuster cette valeur en fonction de votre besoin */
+}
