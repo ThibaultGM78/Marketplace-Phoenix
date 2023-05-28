@@ -1,4 +1,4 @@
-
+<header>
     <!-- navbar top -->
     <div class="container">
         <div class="navbar-top">
@@ -13,22 +13,14 @@
                 <?php
                     if($_SESSION['role'] == 'compagny'){
                         echo '<div class="input-box">
-                        <input type="text" placeholder="Rechercher...">
-                        <span class="icon">
-                            <i class="uil uil-search search-icon"></i>
-                            <a href=""><i><img src="" id="decal" alt="" width="30px"></i></a>
-                        </span>
-                        <i class="uil uil-times close-icon"></i>
-                        </div>';
-                    }
-                    else if($_SESSION['role'] == 'compagny'){
-                        echo '<div class="input-box">
-                        <input type="text" placeholder="Rechercher...">
-                        <span class="icon">
-                            <i class="uil uil-search search-icon"></i>
-                            <a href=""><i><img src="" id="decal" alt="" width="30px"></i></a>
-                        </span>
-                        <i class="uil uil-times close-icon"></i>
+                            <form method="post" onsubmit="return validateForm()" action="market.php" class="mb-3">
+                                <input type="text" id="category" name="category" placeholder="Rechercher...">
+                                <span class="icon">
+                                    <i class="uil uil-search search-icon"></i>
+                                    <i><img src="" id="decal" alt="" width="30px"></i>
+                                </span>
+                                <i class="uil uil-times close-icon"></i>
+                            </form>
                         </div>';
                     }
                     else{
@@ -129,3 +121,4 @@
         searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
         closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
     </script>
+</header>
