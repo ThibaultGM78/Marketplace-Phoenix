@@ -6,7 +6,6 @@
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Inscription</title>
     <meta charset="UTF-8">

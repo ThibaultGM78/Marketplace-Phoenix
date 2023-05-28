@@ -5,7 +5,6 @@
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Connexion</title>
     <meta charset="UTF-8">
