@@ -1,3 +1,4 @@
+
 <?php
     //Trouve le pourcentage de reduction accore au client en fonction de son abonnement
     function reduction($PDO){
