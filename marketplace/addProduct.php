@@ -28,39 +28,46 @@
     <?php
             include 'structure/header.php'
         ?>
-    <div class="centered">
-        <!--Formulaire d'ajout de produit-->
-        <h2>Form</h2>
-        <form method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="name" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Entrez le nom du produit">
-            </div>
-            <div class="mb-3">
-                <label for="category" class="form-label">Categorie</label>
-                <input type="text" class="form-control" id="category" name="category"
-                    placeholder="Entrez la categorie du produit">
-            </div>
-            <div class="mb-3">
-                <label for="desc" class="form-label">Description</label>
-                <input type="text" class="form-control" id="desc" name="desc"
-                    placeholder="Entrez la description du produit">
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Prix</label>
-                <input type="number" step="0.01" class="form-control" id="price" name="price"
-                    placeholder="Entrez le prix">
-            </div>
-            <div class="mb-3">
-                <label for="stock" class="form-label">Stock</label>
-                <input type="number" step="1" class="form-control" id="stock" name="stock" placeholder="Entrez le prix">
-            </div>
-            <div class="mb-3">
-                <label for="img" class="form-label">Image</label>
-                <input type="file" class="form-control" id="img" name="img" accept="image/png, image/jpeg" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        </form>
+    <div class="d-flex justify-content-center align-items-center page-container" id="addPD">
+        <div class="interieurAddProduct">
+            <h1>Ajouter un Produit</h1>
+            <form method="post" class="text-center" onsubmit="return validateForm()" enctype="multipart/form-data">
+
+                <div class="labName">
+                    <label for="name" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="name" name="name"
+                        placeholder="Entrez le nom du produit">
+                </div>
+
+                <div class="labName">
+                    <label for="category" class="form-label">Categorie</label>
+                    <input type="text" class="form-control" id="category" name="category"
+                        placeholder="Entrez la categorie du produit"></div>
+
+                <div class="labName">
+                    <label for="desc" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="desc" name="desc"
+                        placeholder="Entrez la description du produit"></div>
+
+                <div class="labName">
+                    <label for="price" class="form-label">Prix</label>
+                    <input type="number" step="0.01" class="form-control" id="price" name="price"
+                        placeholder="Entrez le prix"></div>
+
+                <div class="labName">
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" step="1" class="form-control" id="stock" name="stock"
+                        placeholder="Entrez le prix"></div>
+
+                <div class="labName">
+                    <label for="img" class="form-label">Image</label>
+                    <input type="file" id="img" name="img" accept="image/png, image/jpeg" required>
+                </div>
+
+                <button type="submit"
+                    class="btn mt-5 rounded-pill btn-lg btn-custom2 btn-block text-uppercase">Valider</button>
+            </form>
+        </div>
     </div>
 </body>
 <?php include 'structure/footer.php' ?>

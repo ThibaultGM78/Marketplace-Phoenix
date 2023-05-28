@@ -143,16 +143,26 @@
         </script>
     </header>
 
-    <div class="centered">
-        <h1>Résiliation du contrat</h1>
+
+    <div class="d-flex justify-content-center align-items-center page-container">
+        <div class="interieurAddProduct">
+            <div class="centered">
+                <h1>Résiliation du contrat</h1>
+                <?php
+                include 'actualContract.php';
+            ?>
+            </div>
+            <form action="resiliate.php" method="post" class="text-center">
+                <button name="resilier" value="resilier">Résilier mon contrat </button>
+                <button name="revenir"> Retourner à l'accueil</button>
+            </form>
+            <br>
+
+        </div>
+
+
+
         <?php
-            include 'actualContract.php';
-        ?>
-        <form action="resiliate.php" method="post">
-            <button name="resilier" value="resilier">Je résilie mon contrat </button>
-            <button name="revenir"> Je souhaite revenir à l'accueil</button>
-        </form>
-    <?php
     // Vérifie si des données ont été soumises
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['resilier'])) {

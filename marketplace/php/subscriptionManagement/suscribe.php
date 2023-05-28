@@ -148,25 +148,29 @@
     </header>
 
 
+    <div class="d-flex justify-content-center align-items-center page-container">
+        <form method="post" class="text-center">
+            <div class="interieur">
+                <h1>Souscription abonnement Phoenix</h1>
+                <div>
+                    <label for="nMonth">Nombre de mois:</label>
+                    <input style="border-width: 1px; border-style: solid; border-color: black; width: 5%;" type="number"
+                        id="nMonth" name="nMonth" min="1" max="12" required value="1">
 
-    <form method="post">
-        <div class="centered">
-            <h1>Souscription abonnement Phoenix</h1>
+                    </br>
 
-            <label for="nMonth">Nombre de mois:</label>
-            <input style="border-width: 1px;border-style: solid; border-color : black; width:5%;" type="number"
-                id="nMonth" name="nMonth" min="1" max="12" required>
-            </br>
+                    <label for="reduction">Pourcentage de reduction:</label>
+                    <select name="reduction" required>
+                        <option value="10">10 %</option>
+                        <option value="20">20 %</option>
+                    </select>
+                    </br>
+                </div>
 
-            <label for="reduction">Pourcentage de reduction:</label>
-            <select name="reduction" required>
-                <option value="10">10</option>
-                <option value="20">20</option>
-            </select>
-            </br>
-
-            <button type="submit">Valider</button>
-    </form>
+                <button type="submit"
+                    class="btn mt-5 rounded-pill btn-lg btn-custom2 btn-block text-uppercase">Valider</button>
+            </div>
+        </form>
     </div>
 
 

@@ -150,18 +150,16 @@
     <?php
             require '../../sql/db-config.php';
         ?>
-
-    <div class ="centered">
-        <h2>Signer le contrat</h2>
-        <?php
-            include 'actualContract.php';
-        ?>
-        <form method="post">
-            <!-- <div class="mb-3">
-                <label for="category" class="form-label">Date de debut du contrat : </label>
-                    <input type="date" class="form-control" id="date_debut" name="date_debut" placeholder="Entrez la date">
-                </div> !-->
-            <div class="mb-3">
+    <div class="d-flex justify-content-center align-items-center page-container">
+        <div class="interieurAddProduct">
+            <div class="centered">
+                <h1>Signer le contrat</h1>
+                <?php
+                include 'actualContract.php';
+            ?>
+            </div>
+            <form method="post" class="text-center">
+            <div>
                 <label for="category" class="form-label"><b>Date de fin du contrat : </b></label>
                 <input type="date" class="form-control" id="date_fin" name="date_fin"
                     <?php echo 'min="'.$contractEnd.'"'?> placeholder="Entrez la date" required>
@@ -178,8 +176,11 @@
                 </optgroup>
             </select><br><br>
             <!-- recuperer toutes les valeurs et ajouter dans la bdd, creer marketplace_contract et marketplace_compagny !-->
-            <button type="submit" class="btn btn-primary">Valider</button>
+            <button type="submit" class="text-uppercase">Valider</button>
         </form>
+        </div>
+    </div>
+
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $date_fin = $_POST["date_fin"];
