@@ -19,7 +19,7 @@
             $price = $unitePrice * $nBuy;
 
             echo '
-            
+                <link rel="stylesheet" type="text/css" href="css/productDetails.css">
                 <button type="button" onclick="minus('.$fieldId.','.$isCalculatingTotal.')">-</button>
 
                 <input  type="hidden" id="stockV'.$fieldId.'" value="'.$list[0]['product_stock'].'">
@@ -31,7 +31,7 @@
                 <button type="button" onclick="plus('.$fieldId.','.$isCalculatingTotal.')">+</button>  
                 <br>
 
-                <button type="button" onclick="deleteElement('.$fieldId.','.$isCalculatingTotal.')">Suprimer</button> 
+                <button type="button" onclick="deleteElement('.$fieldId.','.$isCalculatingTotal.')">Supprimer</button> 
                 <input type="hidden" id="price'.$fieldId.'" value="'.$unitePrice.'">
             <input name="number" class="displayNumber" id="group'.$fieldId.'" style="width: 30px;" value="'.$price.'" disabled>€';
 

@@ -18,3 +18,7 @@ a:hover
 {
     color: orange;
 }
+#min-taille{
+    min-height: 70vh;
+    text-align: center;
+}

@@ -83,8 +83,6 @@
         catch(PDOExeption $pe){
             echo 'ERREUR : '.$pe->getMessage();
         }
-
-        //On redirige l'utilisateur sur la page de connexion afin qu'il se connecte a son nouveau compte.
-        //header('Location: index.php');
+        header('Location: index.php');
     } 
 ?>
