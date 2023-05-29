@@ -176,7 +176,7 @@
                 </optgroup>
             </select><br><br>
             <!-- recuperer toutes les valeurs et ajouter dans la bdd, creer marketplace_contract et marketplace_compagny !-->
-            <button type="submit" class="text-uppercase">Valider</button>
+            <button type="submit">Valider</button>
         </form>
         </div>
     </div>

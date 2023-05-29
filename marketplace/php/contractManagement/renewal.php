@@ -147,12 +147,15 @@
     <?php
         require '../../sql/db-config.php';
     ?>
-    <div class="centered">
-        <h1>Renouvellement de contrat</h1>
-        <?php
-            include 'actualContract.php';
-        ?>
-        <form action="renewal.php" method="post">
+    <div class="d-flex justify-content-center align-items-center page-container">
+        <div class="interieurAddProduct">
+            <div class="centered">
+                <h1>Renouvellement de contrat</h1>
+                <?php
+                include 'actualContract.php';
+            ?>
+            </div>
+            <form action="renewal.php" method="post" class="text-center">
             <div class="form-group">
                 <label for="date_fin"><b>Jusqu'à quand voulez-vous renouveler votre contrat ?</b></label>
                 <input type="date" id="date_fin" <?php echo 'min="'.$contractEnd.'"'?> name="date_fin"
@@ -161,6 +164,9 @@
             <br><br>
             <button type="submit" class="button">Valider</button>
         </form>
+            <br>
+
+        </div>
         <?php
             // Vérifie si des données ont été soumises
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
