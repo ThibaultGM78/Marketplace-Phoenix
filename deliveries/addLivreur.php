@@ -31,6 +31,17 @@
             margin: auto;
         }
 
+        .error {
+            margin: auto;
+            width: 370px;
+            padding: 15px;
+            max-width: 100%;
+            font-size: 15px;
+            height: 45px;
+            font-weight: 500;
+            background-color: #ffe6e6;
+        }
+
         .login-form .btn {
             font-size: 18px;
             font-weight: bold;
