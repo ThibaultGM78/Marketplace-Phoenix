@@ -14,10 +14,12 @@
 
         // Réorganiser le tableau des mois pour commencer par le mois actuel à la fin
         $months = array_merge(array_slice($months, $current_month_index + 1), array_slice($months, 0, $current_month_index + 1));
-
+        $arrayData = array_values($data);
+        $arrayData = array_slice($arrayData, 0, 12);
+        $chart_data = array_merge(array_slice($arrayData, $current_month_index + 1), array_slice($arrayData, 0, $current_month_index + 1));
         // Initialisez les tableaux de données pour le graphique
         $chart_labels = $months;
-        $chart_data = array_values($data);
+        //$chart_data = array_values($data);
 
         // Créer le graphique avec Chart.js
         echo ' <div class="centered">
@@ -48,7 +50,8 @@
                 });
             </script>
         </div>';
-            }
+
+    }
 ?>
 
 <!DOCTYPE html>
