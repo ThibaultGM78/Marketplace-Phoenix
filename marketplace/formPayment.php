@@ -3,6 +3,27 @@
     //Include
     include 'php/basketManagement/verifFormPayment.php';
     include 'php/function/field.php';
+
+    //On verifie si le panier est vide
+    function emptyBasket($json) {
+        $data = json_decode($json, true); // Convertir le JSON en tableau associatif
+      
+        if (is_array($data)) {
+          foreach ($data as $element) {
+            if ($element !== 0) {
+              return false;
+            }
+          }
+          echo "Panier vide";
+          return true;
+        }
+      
+        return false;
+    }
+
+   if(emptyBasket($_SESSION['basket'])){
+    header('Location: basket.php');
+   }
 ?>
 <!DOCTYPE html>
 <html>
