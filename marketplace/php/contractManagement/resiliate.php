@@ -151,9 +151,8 @@
                 <?php
                 include 'actualContract.php';
             ?>
-            </div>
             <form action="resiliate.php" method="post" class="text-center">
-                <button name="resilier" value="resilier">Résilier mon contrat </button>
+                <button name="resilier" value="resilier" >Résilier mon contrat </button><br><br>
                 <button name="revenir"> Retourner à l'accueil</button>
             </form>
             <br>
@@ -204,7 +203,7 @@
         }
     }
     ?>
-
+    </div>
     </div>
     <footer id="footer">
         <h1 class="text-center">PHOENIX</h1>
