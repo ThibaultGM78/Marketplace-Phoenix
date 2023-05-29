@@ -89,15 +89,6 @@
                     }
                    
                 }
-                if($_SESSION['role'] == 'customer'){
-                    echo '
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Abonnement</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="php\subscriptionManagement\suscribe.php">Souscrire</a>
-                        </div>
-                    </li>';
-                }
                 ?>
 
                     <?php
@@ -108,6 +99,15 @@
                 else{
                    // echo '//ID == '.$_SESSION['id']." //";
                    // echo '<li> Panier ='.json_encode($_SESSION['basket']).'</li>';
+                   if($_SESSION['role'] == 'customer'){
+                    echo '
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Abonnement</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="php\subscriptionManagement\suscribe.php">Souscrire</a>
+                        </div>
+                    </li>';
+                }
                     echo'<li><a class="nav-link" aria-current="page" href="php/userManagement/logout.php">Deconnexion</a></li>';
                 }
                 ?>
