@@ -49,6 +49,6 @@
     //Arreter le traitement de la requette MySQL
     $requete2->closeCursor();
 
-    header('Location: livreur.php');
+    header('Location: index.php');
 
 ?>

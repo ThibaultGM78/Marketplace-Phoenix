@@ -1,81 +1,95 @@
 <?php
 
+session_start();
+
 // file containing the parameters to connect to the sql database
 require 'sql/db-config.php';
 
 include "Retrieveaddress.php";
 include "optimizeroute.php";
 
-session_start();
-
 
 try
 {
-    // we connect to MySQL
-    $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS);
+  // we connect to MySQL
+  $PDO = new PDO($DB_DSN, $DB_USER, $DB_PASS);
 }
 
 // Show error message when there is a problem with MySQL
 catch(Exception $e)
 {
-    die('Erreur : '.$e->getMessage());
+  die('Erreur : '.$e->getMessage());
 }
 
-// query to update addresses by removing spaces
-$req_supp_espace = $PDO->prepare("UPDATE marketplace_purchase SET purchase_adress = REPLACE(purchase_adress, ' ', '')");
 
-$req_supp_espace->execute();
+if ($_SESSION['initial'] == 0)
+{
+  
+  // query to update addresses by removing spaces
+  $req_supp_espace = $PDO->prepare("UPDATE marketplace_purchase SET purchase_adress = REPLACE(purchase_adress, ' ', '')");
 
-$req_supp_espace->closeCursor();
+  $req_supp_espace->execute();
 
-
-// query to update addresses by removing spaces
-$req_supp_espace = $PDO->prepare("UPDATE marketplace_archive SET purchase_adress = REPLACE(purchase_adress, ' ', '')");
-
-$req_supp_espace->execute();
-
-$req_supp_espace->closeCursor();
-
-//prepare the request
-$req = $PDO->prepare('SELECT * from marketplace_purchase order by purchase_date');
-
-//request for unsebscribed customers
-$requnsub = $PDO->prepare('SELECT mp.purchase_adress, mp.purchase_basket
-FROM marketplace_purchase AS mp
-LEFT JOIN marketplace_customer AS mc ON mp.id_customer = mc.id_customer
-WHERE mc.id_customer IS NULL;');
+  $req_supp_espace->closeCursor();
 
 
-//request for subscribed customers
-$reqsub = $PDO -> prepare('SELECT mp.purchase_adress,  mp.purchase_basket
-FROM marketplace_customer AS mc
-JOIN marketplace_purchase AS mp ON mc.id_customer = mp.id_customer
-JOIN marketplace_subscription AS ms ON mc.id_subscription = ms.id_subscription
-');
+  // query to update addresses by removing spaces
+  $req_supp_espace = $PDO->prepare("UPDATE marketplace_archive SET purchase_adress = REPLACE(purchase_adress, ' ', '')");
+
+  $req_supp_espace->execute();
+
+  $req_supp_espace->closeCursor();
+
+  //prepare the request
+  $req = $PDO->prepare('SELECT * from marketplace_purchase order by purchase_date');
+
+  //request for unsebscribed customers
+  $requnsub = $PDO->prepare('SELECT mp.purchase_adress, mp.purchase_basket
+  FROM marketplace_purchase AS mp
+  LEFT JOIN marketplace_customer AS mc ON mp.id_customer = mc.id_customer
+  WHERE mc.id_customer IS NULL;');
 
 
-//send list of parameters
-$req->execute();
-$reqsub->execute();
-$requnsub->execute();
+  //request for subscribed customers
+  $reqsub = $PDO -> prepare('SELECT mp.purchase_adress,  mp.purchase_basket
+  FROM marketplace_customer AS mc
+  JOIN marketplace_purchase AS mp ON mc.id_customer = mp.id_customer
+  JOIN marketplace_subscription AS ms ON mc.id_subscription = ms.id_subscription
+  ');
 
-switch ($_SESSION['permis']) {
-    case "A":
-        $nb_max_commandes = 3;
-        break;
-    case "B":
-        $nb_max_commandes = 15;
-        break;
-    case "C":
-        $nb_max_commandes = 40;
-        break;
-    default:
-        break;
+
+  //send list of parameters
+  $req->execute();
+  $reqsub->execute();
+  $requnsub->execute();
+
+  switch ($_SESSION['permis']) {
+      case "A":
+          $nb_max_commandes = 3;
+          break;
+      case "B":
+          $nb_max_commandes = 15;
+          break;
+      case "C":
+          $nb_max_commandes = 40;
+          break;
+      default:
+          break;
+  }
+
+  listeCommandes($reqsub, $requnsub, $nb_max_commandes ,$PDO);
+
+  $req->closeCursor();
+  $reqsub->closeCursor();
+  $requnsub->closeCursor();
+
 }
 
-listeCommandes($reqsub, $requnsub, $nb_max_commandes ,$PDO);
+else
+{
+  livreur();
+}
 
-//livreur();
 
 if (!empty($_SESSION['etape'][0]))
 {
@@ -135,15 +149,19 @@ if (!empty($_SESSION['etape'][0]))
     echo "<input type='submit' value='Livraison terminé'>";
     echo "</form>";
 
-    echo "<form method='post' action='archive.php'>";
-    echo "<input type='submit' value='Optimiser le Trajet'>";
-    echo "</form>";
+    if ($_SESSION['initial'] == 0)
+    {
+      echo "<form method='post' action='livreur.php'>";
+      echo "<input type='submit' value='Optimiser trajet'>";
+      echo "</form>";
 
+      $_SESSION['initial'] = 1;
+    }
+
+    echo'<a class="nav-link" aria-current="page" href="php/logout.php">Deconnexion</a>';
+    
 }
 
-/*
-//Arreter le traitement de la requette MySQL
-$req->closeCursor();*/
 
 ?>
 

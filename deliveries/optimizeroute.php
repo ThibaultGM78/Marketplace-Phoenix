@@ -90,6 +90,7 @@ function livreur()
     }
 
     $_SESSION['nb_adresse'] = $j;
-    
-    
+
 }
+
+?>

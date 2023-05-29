@@ -43,6 +43,7 @@
         if(empty($errors)){
             $_SESSION['login'] = $login;
             $_SESSION['permis'] = $list[0]['typePermis'];
+            $_SESSION['initial'] = 0;
 
             header('Location: livreur.php');//L'utilisateur est redirige sur la page d'accueil du site.
         }
