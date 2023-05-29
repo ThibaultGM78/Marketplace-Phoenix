@@ -26,10 +26,11 @@
         <div class="col-4 offset-4">
             <form method="post" onsubmit="return validateForm()">
             <br>
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="category" name="category" placeholder="Rechercher">
+                <div class="mb-3 centered2">
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Produit...">
+                    <button type="submit" id="SR">Rechercher</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                
             </form>           
             <br>
 

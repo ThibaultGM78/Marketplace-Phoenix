@@ -315,6 +315,15 @@ input {
     /* largeur obligatoire pour être centré */
 }
 
+.centered2 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    /* largeur obligatoire pour être centré */
+}
 
 button {
     background-color: #f0e4d4;
@@ -325,6 +334,16 @@ button {
     font-size: 18px;
     /* Taille du texte ajustée */
     border-radius: 4px;
+    cursor: pointer;
+}
+
+#SR{
+    background-color: #f0e4d4;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 1px;
     cursor: pointer;
 }
 
