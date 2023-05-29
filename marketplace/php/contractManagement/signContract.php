@@ -157,7 +157,6 @@
                 <?php
                 include 'actualContract.php';
             ?>
-            </div>
             <form method="post" class="text-center">
             <div>
                 <label for="category" class="form-label"><b>Date de fin du contrat : </b></label>
@@ -178,7 +177,6 @@
             <!-- recuperer toutes les valeurs et ajouter dans la bdd, creer marketplace_contract et marketplace_compagny !-->
             <button type="submit">Valider</button>
         </form>
-        </div>
     </div>
 
         <?php
@@ -204,7 +202,7 @@
                     }
                     
                     if ($contractEnd != "Aucun contrat"){
-                        echo('<p style="font-size: 20px; font-weight: bold;">Vous ne pouvez pas signer un contrat si vous en avez deja un</p>');
+                        echo('<p style="color:red;font-size: 20px; font-weight: bold;">Vous ne pouvez pas signer un contrat si vous en avez deja un</p>');
                     }
                     // Met à jour la date de fin du contrat dans la base de données
                     //Crée le nouveau contrat
@@ -237,6 +235,8 @@
             }  
         }
     ?>
+    </div>
+    </div>
     </div>
     <footer id="footer">
         <h1 class="text-center">PHOENIX</h1>

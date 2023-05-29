@@ -337,6 +337,18 @@ button {
     cursor: pointer;
 }
 
+.button {
+    background-color: #f0e4d4;
+    /* ou grey pour gris */
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    /* Taille du texte ajustée */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 #SR{
     background-color: #f0e4d4;
     color: black;

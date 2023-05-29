@@ -154,7 +154,6 @@
                 <?php
                 include 'actualContract.php';
             ?>
-            </div>
             <form action="renewal.php" method="post" class="text-center">
             <div class="form-group">
                 <label for="date_fin"><b>Jusqu'à quand voulez-vous renouveler votre contrat ?</b></label>
@@ -204,6 +203,7 @@
             }
         }
     ?>
+    </div>
     </div>
 
 

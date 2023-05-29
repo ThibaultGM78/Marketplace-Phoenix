@@ -25,8 +25,8 @@
             include 'structure/header.php';
         ?>
 
-          <div class="content" style="text-align: center">
-
+          <div class="content">
+            <div class="centered">
             <form method="post">
               
                 <?php
@@ -55,15 +55,15 @@
 
                     //Postal code
                     $value = $_POST['postal'] ?? '';
-                    $msgError = "Veuillez entrer votre code postale.";
-                    field('postal',$classField,"Code postale",$classLabel,$classInput,'text',$classSpan,'errorPostal',$classError,$msgError,$value,$errors);
+                    $msgError = "Veuillez entrer votre code postal.";
+                    field('postal',$classField,"Code postal",$classLabel,$classInput,'text',$classSpan,'errorPostal',$classError,$msgError,$value,$errors);
                      
                 ?>
 
-                <input type="submit" value="Soumettre">
+                <input class="button" type="submit" value="Soumettre">
 
             </form>
-    
+            </div>
           </div>  
 
         <?php
