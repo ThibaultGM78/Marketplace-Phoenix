@@ -28,7 +28,7 @@
         include 'structure/header.php';
     ?>
 
-    <div class="d-flex justify-content-center align-items-center login-container">
+    <div class="d-flex justify-content-center align-items-center login-container" id="Inscr">
         <!--Formulaire d'ajour d'utilisateur-->
         <form method="post" class="login-form text-center" onsubmit="return validateForm()">
 
@@ -86,7 +86,7 @@
             </div>
 
             <button type="submit"
-                class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">inscription</button>
+                class="btn-lg btn-custom btn-block text-uppercase">inscription</button>
 
             <p class="mt-3 font-weight-normal">Vous possédez déjà un compte ? <a
                     href="connection.php"><strong>Connectez-vous</strong></a></p>

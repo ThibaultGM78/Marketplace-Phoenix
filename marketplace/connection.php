@@ -44,7 +44,7 @@
             ?>
 
             <button type="submit"
-                class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Connexion</button>
+                class="btn-lg btn-custom btn-block text-uppercase">Connexion</button>
             <p class="mt-3 font-weight-normal">Vous ne possédez pas de compte ? <a
                     href="addUser.php"><strong>Inscrivez-vous</strong></a></p>
 

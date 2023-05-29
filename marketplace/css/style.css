@@ -345,6 +345,13 @@ button:hover {
     padding-bottom: 15px;
 }
 
+#Inscr {
+    height: 80vh;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 .login-form {
     margin: auto;
     width: 370px;
@@ -370,6 +377,17 @@ button:hover {
 .form-control:focus {
     border-color: #ff3f3f;
     box-shadow: 0 0 0 0.2rem #8b0000;
+}
+
+.error {
+    margin: auto;
+    width: 370px;
+    padding: 15px;
+    max-width: 100%;
+    font-size: 15px;
+    min-height: 48px;
+    font-weight: 500;
+    background-color: #ffe6e6;
 }
 
 .btn-custom {
