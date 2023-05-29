@@ -24,13 +24,10 @@
 
     <div class="content">
         <div class="col-4 offset-4">
-
-            <!--Barre de recherche-->
-            <h2>Rechercher un produit</h2>    
             <form method="post" onsubmit="return validateForm()">
+            <br>
                 <div class="mb-3">
-                    <label for="category" class="form-label">Categorie</label>
-                    <input type="text" class="form-control" id="category" name="category" placeholder="Entrez la categorie du produit">
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Rechercher">
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>           
