@@ -339,14 +339,7 @@ button:hover {
 /* Contenue des pages */
 
 .login-container {
-    height: 80vh;
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-#Inscr {
-    height: 80vh;
+    min-height: 80vh;
     width: 100%;
     padding-top: 15px;
     padding-bottom: 15px;
