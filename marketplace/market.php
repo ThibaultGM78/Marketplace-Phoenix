@@ -22,7 +22,7 @@
 
     <?php include 'structure/header.php' ?>
 
-    <div class="content">
+    <div class="content" id="min-taille">
         <div class="col-4 offset-4">
             <form method="post" onsubmit="return validateForm()">
             <br>
