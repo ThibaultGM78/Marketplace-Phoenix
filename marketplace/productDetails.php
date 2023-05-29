@@ -63,7 +63,12 @@ try {
     if($list[0]['id_compagny'] == 1){
         echo '<p>Produit vendu par votre marketplace Phoenix</p>';
     }
+    else{
+        $sql = "SELECT compagny_name FROM marketplace_compagny WHERE id_compagny = ".$list[0]["id_compagny"].";";
+        $list2 = sqlSearch($PDO, $sql);
+        echo '<p>Entreprise: '.$list2[0]["compagny_name"].'</p>';
 
+    }
     basketField(0,$productId,$nBuy,$reduction,$list,false);
     echo '</div>';
     echo '</div>';
