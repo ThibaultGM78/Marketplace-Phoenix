@@ -43,6 +43,9 @@
                 //Login
                 $value = $_POST['login'] ?? '';//On recupere la valeur precedement insere par l'utlisateur
                 $msgError = "Ce nom d'utilisateur existe déjà.";//Message d'erreur
+                if($value == null){
+                    $msgError = "Veuillez entrer un nom d'utilisateur";
+                }
                 //Champ standardise par soucis de praticites
                 field('login',$classField,"Nom d'utilisateur",$classLabel,$classInput,'text',$classSpan,'errorLogin',$classError,$msgError,$value,$errors);
 

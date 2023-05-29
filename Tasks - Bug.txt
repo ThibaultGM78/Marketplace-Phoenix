@@ -1,2 +1,1 @@
-Barre de recherche dans toute les pages : Fait
-Historique que qd connecte : Fait
+Bug page produit
