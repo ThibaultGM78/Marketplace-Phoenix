@@ -68,7 +68,7 @@
         }
         
         a, a:visited, a:hover, a:active {
-            color: #4d0000;
+            color: rgba(238,224,208) ;
         }
 
         .login-form .btn:hover {
