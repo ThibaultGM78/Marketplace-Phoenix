@@ -163,7 +163,7 @@ VALUES("Surgrip",3,"Sport",88,"Un surgrip qui vous permettra de maintenir votre 
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
 VALUES("Balle de padel",5,"Sport",35,"Des balles HEAD PRO déprésurisées pour vos parties de Padel endiablés","img/compagny/Mugiwarren/ballepadel.jpg", 4, '{"January": 40,"February": 35,"March": 29,"April": 28,"May": 22,"June": 27,"July": 48,"August": 42,"September": 34,"October": 38,"November": 30,"December": 25,"lastSaleMonth": "548"}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
-VALUES("Polo roger Federer",75,"Sport",7,"Ce magnifique polo allie confort et performance, il vous permettra d'atteindre les sommets !","img/compagny/Mugiwarren/federerpolo.jpg", 4, '{"January": 4,"February": 1,"March": 3,"April": 5,"May": 3,"June": 3,"July": 7,"August": 8,"September": 7,"October": 5,"November": 8,"December": 3,"lastSaleMonth": "1750}');
+VALUES("Polo roger Federer",75,"Sport",7,"Ce magnifique polo allie confort et performance, il vous permettra d'atteindre les sommets !","img/compagny/Mugiwarren/federerpolo.jpg", 4, '{"January": 4,"February": 1,"March": 3,"April": 5,"May": 3,"June": 3,"July": 7,"August": 8,"September": 7,"October": 5,"November": 8,"December": 3,"lastSaleMonth": "1750"}');
 select * from marketplace_product;
 
 /*Partie livreur*/
