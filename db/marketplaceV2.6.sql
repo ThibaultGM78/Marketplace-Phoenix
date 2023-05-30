@@ -191,13 +191,13 @@ CREATE TABLE marketplace_archive (
 ALTER TABLE marketplace_archive MODIFY etatExped ENUM('enPreparation', 'préparé', 'Livré') DEFAULT 'enPreparation';
 
 
-/*INSERT INTO marketplace_archive (id_purchase, id_customer, purchase_date, purchase_basket, purchase_adress, id_Livreur, etatExped, date_livraison) VALUES
+INSERT INTO marketplace_archive (id_purchase, id_customer, purchase_date, purchase_basket, purchase_adress, id_Livreur, etatExped, date_livraison) VALUES
 (1,1,'2022-02-02', '{"1":2}', '12 Rue de la Paix, Paris', 1,'enPreparation', '2022-02-03'),
-(2,1,'2022-02-03', '{"1":2}', '8 Avenue des Champs-Élysées, Paris', 2,'enPreparation', '2022-02-03'),
-(3,2,'2022-02-05', '{"3":3,"4":1,"4":1}', '5 Rue de Rivoli, Paris', 3, 'enPreparation', '2022-02-03'),
-(4,2,'2022-02-06', '{"1":7,"3":2}', '20 Rue de la Liberté, Lyon', 4, 'enPreparation', '2022-02-03'),
-(5,3,'2022-02-08', '{"1":1}', '2 Rue du Faubourg Saint-Honoré, Paris', 5, 'enPreparation', '2022-02-03'),
-(6,3,'2022-02-09', '{"2":2}', '15 Rue de la République, Marseille', 6, 'enPreparation', '2022-02-03');*/
+(2,2,'2022-02-03', '{"1":2}', '8 Avenue des Champs-Élysées, Paris', 2,'enPreparation', '2022-02-03'),
+(3,3,'2022-02-05', '{"3":3,"4":1,"4":1}', '5 Rue de Rivoli, Paris', 3, 'enPreparation', '2022-02-03'),
+(4,4,'2022-02-06', '{"1":7,"3":2}', '20 Rue de la Liberté, Lyon', 4, 'enPreparation', '2022-02-03'),
+(5,5,'2022-02-08', '{"1":1}', '2 Rue du Faubourg Saint-Honoré, Paris', 5, 'enPreparation', '2022-02-03'),
+(6,6,'2022-02-09', '{"2":2}', '15 Rue de la République, Marseille', 6, 'enPreparation', '2022-02-03');
 
 CREATE TABLE marketplace_Vehicle (
   id_Vehicle INT NOT NULL AUTO_INCREMENT,
@@ -235,3 +235,16 @@ select * from marketplace_user;
 select * from marketplace_customer;
 select * from marketplace_archive;
 select * from marketplace_product;
+select * from marketplace_subscription;
+
+SELECT mp.purchase_adress, mp.purchase_basket
+  FROM marketplace_purchase AS mp
+  LEFT JOIN marketplace_customer AS mc ON mp.id_customer = mc.id_customer
+  WHERE mc.id_subscription IS NULL;
+  
+  SELECT mp.purchase_adress,  mp.purchase_basket
+  FROM marketplace_customer AS mc
+  JOIN marketplace_purchase AS mp ON mc.id_customer = mp.id_customer
+  JOIN marketplace_subscription AS ms ON mc.id_subscription = ms.id_subscription
+  
+  

@@ -47,7 +47,7 @@ if ($_SESSION['initial'] == 0)
   $requnsub = $PDO->prepare('SELECT mp.purchase_adress, mp.purchase_basket
   FROM marketplace_purchase AS mp
   LEFT JOIN marketplace_customer AS mc ON mp.id_customer = mc.id_customer
-  WHERE mc.id_customer IS NULL;');
+  WHERE mc.id_subscription IS NULL;');
 
 
   //request for subscribed customers

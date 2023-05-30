@@ -63,7 +63,7 @@
                 echo "<p class='lead text-muted'>Login :".$_SESSION['login']."</p>";
             }*/
         ?>
-    <img src="img/logow.png" alt="Logo" class="mb-3 text-center" style="width: 200px;">
+    <img src="img/logoW.png" alt="Logo" class="mb-3 text-center" style="width: 200px;">
     <h1>Livreur</h1>
     <div>
     <hr>
