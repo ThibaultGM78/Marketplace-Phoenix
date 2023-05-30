@@ -129,7 +129,7 @@ VALUES(2,"MaximePull",2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May
 INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
 VALUES(3,"EISTEL",3, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
-VALUES(4,"Mugiwarren",4, '{"January": 158,"February": 124,"March": 108,"April": 100,"May": 164,"June": 145,"July": 144,"August": 129,"September": 136,"October": 178,"November": 211,"December": 185,"lastSaleMonth": "3647"}');
+VALUES(5,"Mugiwarren",4, '{"January": 158,"February": 124,"March": 108,"April": 100,"May": 164,"June": 145,"July": 144,"August": 129,"September": 136,"October": 178,"November": 211,"December": 185,"lastSaleMonth": "3647"}');
 SELECT * FROM marketplace_compagny;
 
 /*DELETE marketplace_contract, marketplace_compagny FROM marketplace_contract
