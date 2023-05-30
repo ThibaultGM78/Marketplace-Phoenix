@@ -57,7 +57,7 @@
 <body>
 
 <div class="d-flex flex-column justify-content-center align-items-center login-container">
-        <img src="img/logoW.png" alt="Logo" class="mb-3 text-center" style="width: 200px;">
+        <img src="img/logow.png" alt="Logo" class="mb-3 text-center" style="width: 200px;">
         <form method="post" class="login-form text-center">
 
             <?php
