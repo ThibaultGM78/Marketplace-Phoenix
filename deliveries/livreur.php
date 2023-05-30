@@ -126,12 +126,11 @@ if (!empty($_SESSION['etape'][0]))
 
           $donnees = $request->fetch();
 
-          $produit = $donnees['product_name'];  
-          
-          $request->closeCursor();
-          
-
-          echo "<li>".$var[1]." ".$produit."</li>";
+          if(isset($donnees['product_name'])){
+            $produit = $donnees['product_name'];  
+            $request->closeCursor();
+            echo "<li>".$var[1]." ".$produit."</li>";
+          }
       }
       echo "<br></ul>";
 
