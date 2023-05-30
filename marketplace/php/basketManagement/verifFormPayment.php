@@ -3,7 +3,7 @@
 include 'php/function/sqlCmd.php';
 include 'api/googleApi.php';
 
-//On creer un tableau ressencant les erreurs potentielles.
+//On crée un tableau resencant les erreurs potentielles.
 $errors = [];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){

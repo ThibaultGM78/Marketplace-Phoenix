@@ -51,6 +51,7 @@ try {
     echo '<div class="col-md-6">';
     echo '<img src="'.$list[0]['product_img'].'" class="img-fluid rounded"></img><br>';
     echo '</div>';
+    echo '<div style="text-align: center;';
     echo '<div class="col-md-6">';
     echo '<h2>'.$list[0]['product_name'].'</h2><br>';
     echo '<p class="lead">'.$list[0]['product_desc'].'</p><br>';
@@ -62,11 +63,18 @@ try {
     if($list[0]['id_compagny'] == 1){
         echo '<p>Produit vendu par votre marketplace Phoenix</p>';
     }
+    else{
+        $sql = "SELECT compagny_name FROM marketplace_compagny WHERE id_compagny = ".$list[0]["id_compagny"].";";
+        $list2 = sqlSearch($PDO, $sql);
+        echo '<p>Entreprise: '.$list2[0]["compagny_name"].'</p>';
 
+    }
     basketField(0,$productId,$nBuy,$reduction,$list,false);
     echo '</div>';
     echo '</div>';
     echo '</div>';
+    echo '</div>';
+    echo '<hr>';
 
     //Produits similaires
     echo '<div class="container my-5">';

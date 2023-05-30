@@ -50,8 +50,9 @@
                 $request->execute();  
                 
                 //--Partie CA
-                $sql = "SELECT compagny_turnover FROM marketplace_compagny WHERE id_compagny = ".$idCompagny.";";
+                $sql = "SELECT compagny_turnover, id_contract FROM marketplace_compagny WHERE id_compagny = ".$idCompagny.";";
                 $list = sqlSearch($PDO, $sql);
+                $idContract = $list[0]["id_contract"];
                 
                 $productStats = json_decode($list[0]["compagny_turnover"], true);
                 if($productStats["lastSaleMonth"] != $actualMonth){
@@ -62,10 +63,30 @@
                 
                 //ON met a jour
                 $sql = "UPDATE marketplace_compagny SET compagny_turnover = '".json_encode($productStats)."' WHERE id_compagny = ".$idCompagny.";";
-                //echo $sql;
                 $request = $PDO->prepare($sql);
                 $request->execute(); 
 
+                //--Partie CA phoenix
+                //Si ce n'est pas phoenix
+                if($idCompagny > 1){
+                    $sql = "SELECT contract_commission FROM marketplace_contract WHERE id_contract = ".$idContract.";";
+                    $list = sqlSearch($PDO, $sql);
+                    $commission = $list[0]["contract_commission"];
+
+                    $sql = "SELECT compagny_turnover FROM marketplace_compagny WHERE id_compagny = 1;";
+                    $list = sqlSearch($PDO, $sql);
+                    
+                    $productStats = json_decode($list[0]["compagny_turnover"], true);
+                    if($productStats["lastSaleMonth"] != $actualMonth){
+                        $productStats[$actualMonth] == 0;
+                    }
+                    $productStats[$actualMonth] += $price*$commission/100;
+                    $productStats["lastSaleMonth"] = $actualMonth;
+
+                    $sql = "UPDATE marketplace_compagny SET compagny_turnover = '".json_encode($productStats)."' WHERE id_compagny = 1;";
+                    $request = $PDO->prepare($sql);
+                    $request->execute();
+                }
             }
         }  
         //--Part Purchase
@@ -90,9 +111,6 @@
         ('".$idCustomer."','".date('Y-m-d')."','".$_SESSION['basket']."','".$_GET['adress']."');";
         $request = $PDO->prepare($sql);
         $request->execute();
-
-
-        //echo $sql;
 
     }
     catch(PDOExeption $pe){
