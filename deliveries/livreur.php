@@ -51,10 +51,10 @@ if ($_SESSION['initial'] == 0)
 
 
   //request for subscribed customers
-  $reqsub = $PDO -> prepare('SELECT mp.purchase_adress,  mp.purchase_basket
-  FROM marketplace_customer AS mc
-  JOIN marketplace_purchase AS mp ON mc.id_customer = mp.id_customer
-  JOIN marketplace_subscription AS ms ON mc.id_subscription = ms.id_subscription
+  $reqsub = $PDO -> prepare('SELECT mp.purchase_adress, mp.purchase_basket
+  FROM marketplace_purchase AS mp
+  LEFT JOIN marketplace_customer AS mc ON mp.id_customer = mc.id_customer
+  WHERE mc.id_subscription IS NOT NULL;
   ');
 
 

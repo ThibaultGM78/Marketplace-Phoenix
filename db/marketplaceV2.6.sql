@@ -116,12 +116,16 @@
     INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role`)
     VALUES("Armand","armand2","decathlon@gmail.com","compagny");
     INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role`)
-    VALUES("Client","mdp","client@gmail.com","customer");
+    VALUES("ClientAbonne","mdp","client@gmail.com","customer");
+    INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role`)
+    VALUES("ClientNonAbonne","mdp","client@gmail.com","customer");
     SELECT * FROM marketplace_user;
 
 
     INSERT INTO `marketplace_customer`(`id_user`,`id_subscription`)
     VALUES(7,1);
+    INSERT INTO `marketplace_customer`(`id_user`)
+    VALUES(8);
     /*COMPAGNY*/
     INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
     VALUES(2,"MaximePull",2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
