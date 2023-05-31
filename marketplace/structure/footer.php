@@ -9,7 +9,7 @@
         &copy; Copyright <strong><span>Phoenix</span></strong>. All Rights Reserved
     </div>
     <div class="credite text-center">
-        Designed By <a href="#">CY Tech</a>
+        Designed By <a href="https://cytech.cyu.fr/" target="_blank" >CY Tech</a>
     </div>
     <br>
 </footer>
