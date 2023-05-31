@@ -126,11 +126,12 @@ if (!empty($_SESSION['etape'][0]))
 
           $donnees = $request->fetch();
 
-          if(isset($donnees['product_name'])){
-            $produit = $donnees['product_name'];  
-            $request->closeCursor();
-            echo "<li>".$var[1]." ".$produit."</li>";
-          }
+          $produit = $donnees['product_name'];  
+          
+          $request->closeCursor();
+          
+
+          echo "<li>".$var[1]." ".$produit."</li>";
       }
       echo "<br></ul>";
 
@@ -145,19 +146,19 @@ if (!empty($_SESSION['etape'][0]))
     echo "<br>Le temps du trajet estimé est de <b>".$date."</b><br>";
 
     echo "<form method='post' action='archive.php'>";
-    echo "<input type='submit' value='Livraison terminé'>";
+    echo "<input type='submit' class='custom-button' value='Livraison terminée'>";
     echo "</form>";
 
     if ($_SESSION['initial'] == 0)
     {
       echo "<form method='post' action='livreur.php'>";
-      echo "<input type='submit' value='Optimiser trajet'>";
+      echo "<input type='submit' class='custom-button' value='Optimiser le trajet'>";
       echo "</form>";
 
       $_SESSION['initial'] = 1;
     }
 
-    echo'<a class="nav-link" aria-current="page" href="php/logout.php">Deconnexion</a>';
+    echo'<a class="custom-button" class="nav-link" aria-current="page" href="php/logout.php">Deconnexion</a>';
     
 }
 
@@ -182,9 +183,19 @@ if (!empty($_SESSION['etape'][0]))
         justify-content: flex-start;
         align-items: center;
         height: 100vh;
+        padding: 20px; /* Ajoute de l'espace autour du contenu */
+        font-family: Arial, sans-serif; /* Choisis une police agréable à lire */
+        line-height: 1.5; /* Définit la hauteur de ligne pour un meilleur espacement entre les lignes de texte */
         margin: 20px 0 0 0; /* Ajout d'une marge en haut de 20px */
-        background: #f8f9fa;
+        background-color: #f7f6cf;
       }
+
+      h3 {
+        text-transform: uppercase; /* Transforme le texte en majuscules */
+        border-top: 2px solid #000; /* Ajoute une bordure supérieure à la balise h3 */
+        padding-top: 10px; /* Ajoute un espacement au-dessus de la bordure supérieure */
+      }
+
       #floating-panel {
         text-align: center;
         padding: 20px;
@@ -197,6 +208,20 @@ if (!empty($_SESSION['etape'][0]))
         max-width: 900px;
         margin-top: 20px;
       }
+      .custom-button {
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      .custom-button:hover {
+        background-color: white;
+        color: black;
+      }
+
     </style>
   </head>
   <body>
@@ -219,7 +244,7 @@ if (!empty($_SESSION['etape'][0]))
       </select>
     </div>
     <div id="container">
-      <div id="map"></div>
+      <div id="map" ></div>
       <div id="sidebar"></div>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB04_7zWKon7pqwnfihrhWGdKusU5fUGc4&callback=initMap&v=weekly" defer></script>
