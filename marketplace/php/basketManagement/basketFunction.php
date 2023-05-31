@@ -47,7 +47,7 @@
             echo '
                 <p> Total :
                 <input type="hidden" id="price'.$fieldId.'" value="'.$unitePrice.'">
-                <input name="number" class="displayNumber" id="group'.$fieldId.'" style="width: 30px;" value="'.$price.'" disabled>€
+                <input name="number" class="displayNumber" id="group'.$fieldId.'" style="width: 50px;" value="'.$price.'" disabled>€
                 </p>
             ';
         } 
