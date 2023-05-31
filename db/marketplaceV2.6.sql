@@ -113,6 +113,8 @@ INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role
 VALUES("steguo","sqsq","steg@gmail.com","customer");
 INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role`)
 VALUES("Mugiwarren","mdp","mailrandom@gmail.com","compagny");
+INSERT INTO `marketplace_user`(`user_login`,`user_passwd`,`user_mail`,`user_role`)
+VALUES("Armand","armand2","decathlon@gmail.com","compagny");
 SELECT * FROM marketplace_user;
 
 /*Customer*/
@@ -130,6 +132,8 @@ INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`comp
 VALUES(3,"EISTEL",3, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
 INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
 VALUES(5,"Mugiwarren",4, '{"January": 158,"February": 124,"March": 108,"April": 100,"May": 164,"June": 145,"July": 144,"August": 129,"September": 136,"October": 178,"November": 211,"December": 185,"lastSaleMonth": "3647"}');
+INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
+VALUES(6,"Decathlon",4, '{"January": 100,"February": 70,"March": 108,"April": 50,"May": 164,"June": 140,"July": 144,"August": 111,"September": 96,"October": 178,"November": 180,"December": 185,"lastSaleMonth": "147"}');
 SELECT * FROM marketplace_compagny;
 
 /*DELETE marketplace_contract, marketplace_compagny FROM marketplace_contract
@@ -164,6 +168,16 @@ INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_cate
 VALUES("Balle de padel",5,"Sport",35,"Des balles HEAD PRO déprésurisées pour vos parties de Padel endiablés","img/compagny/Mugiwarren/ballepadel.jpg", 4, '{"January": 40,"February": 35,"March": 29,"April": 28,"May": 22,"June": 27,"July": 48,"August": 42,"September": 34,"October": 38,"November": 30,"December": 25,"lastSaleMonth": "548"}');
 INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
 VALUES("Polo roger Federer",75,"Sport",7,"Ce magnifique polo allie confort et performance, il vous permettra d'atteindre les sommets !","img/compagny/Mugiwarren/federerpolo.jpg", 4, '{"January": 4,"February": 1,"March": 3,"April": 5,"May": 3,"June": 3,"July": 7,"August": 8,"September": 7,"October": 5,"November": 8,"December": 3,"lastSaleMonth": "1750"}');
+INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
+VALUES("Ballon de foot",60,"Ballon",30,"Ballon Officiel Ligue 1 - Football Match - T5","img/compagny/Decathlon/ballon.jpg", 5, '{"January": 10,"February": 7,"March": 3,"April": 5,"May": 3,"June": 3,"July": 7,"August": 8,"September": 7,"October": 5,"November": 8,"December": 3,"lastSaleMonth": "150"}');
+INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
+VALUES("Ballon de volley",50,"Ballon",30,"Matériau super composite en microfibre","img/compagny/Decathlon/ballon_volley.jpg", 5, '{"January": 1,"February": 7,"March": 3,"April": 25,"May": 3,"June": 13,"July": 7,"August": 8,"September": 37,"October": 15,"November": 28,"December": 4,"lastSaleMonth": "159"}');
+INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
+VALUES("Cage de foot",100,"Cage",15,"Utilisable dans le jardin, cette cage de foot est parfaite pour les enfants","img/compagny/Decathlon/cage.jpg", 5, '{"January": 8,"February": 17,"March": 13,"April": 15,"May": 8,"June": 3,"July": 7,"August": 7,"September": 7,"October": 5,"November": 28,"December": 13,"lastSaleMonth": "2"}');
+INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
+VALUES("Maillot de foot",70,"Maillot",30,"Maillot officiel de l'équipe de france de football","img/compagny/Decathlon/maillot.png", 5, '{"January": 10,"February": 0,"March": 3,"April": 5,"May": 20,"June": 3,"July": 7,"August": 4,"September": 16,"October": 1,"November": 8,"December": 7,"lastSaleMonth": "70"}');
+INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
+VALUES("Raquette de ping pong",60,"Raquette",30,"2 raquettes de ping pong, ainsi que 3 balles","img/compagny/Decathlon/raquette.jpg", 5, '{"January": 12,"February": 3,"March": 8,"April": 15,"May": 0,"June": 4,"July": 7,"August": 8,"September": 17,"October": 15,"November": 2,"December": 13,"lastSaleMonth": "30"}');
 select * from marketplace_product;
 
 /*Partie livreur*/
@@ -248,15 +262,6 @@ select * from marketplace_customer;
 select * from marketplace_archive;
 select * from marketplace_product;
 select * from marketplace_subscription;
-
-SELECT mp.purchase_adress, mp.purchase_basket
-  FROM marketplace_purchase AS mp
-  LEFT JOIN marketplace_customer AS mc ON mp.id_customer = mc.id_customer
-  WHERE mc.id_subscription IS NULL;
-  
-  SELECT mp.purchase_adress,  mp.purchase_basket
-  FROM marketplace_customer AS mc
-  JOIN marketplace_purchase AS mp ON mc.id_customer = mp.id_customer
-  JOIN marketplace_subscription AS ms ON mc.id_subscription = ms.id_subscription
+select * from marketplace_compagny;
   
   

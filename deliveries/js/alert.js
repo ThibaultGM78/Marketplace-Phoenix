@@ -1,3 +1,3 @@
 function showMessage() {
-    alert("Compte inexistant Veuillez vous inscrire.");
+    alert("Compte inexistant. Veuillez vous inscrire.");
 }

@@ -49,6 +49,11 @@
     //Arreter le traitement de la requette MySQL
     $requete2->closeCursor();
 
+    //On reinitialise les donnees de session car l'utilisateur s'est deconnecte.
+    unset($_SESSION);
+    //On detruit ensuite la session.
+    session_destroy();
+
     header('Location: index.php');
 
 ?>

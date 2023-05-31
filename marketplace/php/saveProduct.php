@@ -78,7 +78,9 @@
             ('".$name."','".$price."','".$category."','".$stock."','".$desc."', 'img/compagny/".$nameCompagny."/".$nomImage."',".$idCompagny.",'".$monthJSON."');";
 
             $request = $PDO->prepare($sql);
-            $request->execute();    
+            $request->execute();
+            $request->closeCursor();
+  
         }
         catch(PDOExeption $pe){
             echo 'ERREUR : '.$pe->getMessage();

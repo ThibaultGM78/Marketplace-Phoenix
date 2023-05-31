@@ -5,6 +5,7 @@ include 'api/googleApi.php';
 
 //On crée un tableau resencant les erreurs potentielles.
 $errors = [];
+$duree_trajet = 0;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     //On recupere les donnees du formulaire.
@@ -61,9 +62,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             }
 
         } 
-        
-        
-        else 
+     
+        else
         {
             echo '<script src="js/alert.js"></script>';
             echo '<script> alertAdresse(); </script>';

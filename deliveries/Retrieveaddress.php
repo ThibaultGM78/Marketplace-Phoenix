@@ -39,63 +39,67 @@ function recuperer_nb_produit($chaine){
 
 
 
+// function that retrieves the delivery addresses as long as the number of packages is lower than the capacity of the delivery person's vehicle.
+// The function first retrieves the addresses of customers who have subscribed to a subscription, then those of customers who have not subscribed
+function listeCommandes($reqsub, $requnsub, $nb_max_commandes ,$PDO)
+{
+  //initialize session variables
+  $_SESSION['etape'] = array();
+  $_SESSION['colis'] = array();
+  $_SESSION['nb_adresse'] = 0;
 
-function listeCommandes($reqsub, $requnsub, $nb_max_commandes ,$PDO){
+  $i = 1;
 
-    $_SESSION['etape'] = array();
-    $_SESSION['colis'] = array();
-    $_SESSION['nb_adresse'];
+  $adresse_s[0] = 'Av.duParc,95000Cergy';
+  $colis_s[0] = '';
 
-    $i = 1;
+  $nombre_colis_total = (int)0;
+  $nombre_adresse_total = 0;
+  $continue = 1;
 
-    $adresse_s[0] = 'Av.duParc,95000Cergy';
-    $colis_s[0] = '';
+  // loop to retrieve all delivery addresses of the customers who are subscribed in the database and put them in an array
+  while ($donnees = $reqsub->fetch())
+  {
+    $adresse_s[$i] = $donnees['purchase_adress'];
+    $colis_s[$i] = $donnees['purchase_basket'];
+    $i++;
+  }
 
-    $nombre_colis_total = (int)0;
-    $nombre_adresse_total = 0;
-    $continue = 1;
+  $nb_adresses = $i;
 
-    // loop to retrieve all delivery addresses of the customers who are subscribed in the database and put them in an array
-    while ($donnees = $reqsub->fetch())
+  $i = 0;
+
+  // loop to assign each subscribed customer's delivery and address to the $_SESSION variables
+  while (($continue == 1) && ($nb_adresses != 0))
+  {
+    $nombre_colis_total += recuperer_nb_produit($colis_s[$i]);
+
+    if($nombre_colis_total > $nb_max_commandes) 
     {
-      $adresse_s[$i] = $donnees['purchase_adress'];
-      $colis_s[$i] = $donnees['purchase_basket'];
+      $nombre_colis_total -= recuperer_nb_produit($colis_s[$i]);
+      $continue = 0 ;
+    }
+
+    else
+    {
+      $_SESSION['etape'][$i] = $adresse_s[$i];
+      $_SESSION['colis'][$i] = $colis_s[$i];
+
+      $nb_adresses--;
+      $nombre_adresse_total ++;
       $i++;
     }
 
-    $nb_adresses = $i;
+  }
 
-    $i = 0;
-
-    // loop to assign each subscribed customer's delivery and address to the $_SESSION variables
-    while (($continue == 1) && ($nb_adresses != 0))
-    {
-      $nombre_colis_total += recuperer_nb_produit($colis_s[$i]);
-
-      if($nombre_colis_total > $nb_max_commandes) 
-      {
-        $nombre_colis_total -= recuperer_nb_produit($colis_s[$i]);
-        $continue = 0 ;
-      }
-
-      else
-      {
-        $_SESSION['etape'][$i] = $adresse_s[$i];
-        $_SESSION['colis'][$i] = $colis_s[$i];
-
-        $nb_adresses--;
-        $nombre_adresse_total ++;
-        $i++;
-      }
-
-    }
-
-    if($continue == 1){
+  if($continue == 1)
+  {
 
     $j = 0;
 
     // loop to retrieve all delivery addresses of the customers who aren't subscribed in the database and put them in an array
-    while ($donnees = $requnsub->fetch()){
+    while ($donnees = $requnsub->fetch())
+    {
 
       $adresse_u[$j] = $donnees['purchase_adress'];
       $colis_u[$j] = $donnees['purchase_basket'];
@@ -103,62 +107,63 @@ function listeCommandes($reqsub, $requnsub, $nb_max_commandes ,$PDO){
       
     }
 
-      $nb_adresses = $j;
+    $nb_adresses = $j;
 
-      $j = 0;
+    $j = 0;
 
       
-      // loop to assign each unsubscribed customer's delivery and address to the $_SESSION variables
-      while (($nb_adresses != 0)&&($continue == 1))
+    // loop to assign each unsubscribed customer's delivery and address to the $_SESSION variables
+    while (($nb_adresses != 0)&&($continue == 1))
+    {
+
+      $nombre_colis_total += recuperer_nb_produit($colis_u[$j]);
+
+      if($nombre_colis_total > $nb_max_commandes) 
       {
-
-    $nombre_colis_total += recuperer_nb_produit($colis_u[$j]);
-
-    if($nombre_colis_total > $nb_max_commandes) 
-    {
-      $nombre_colis_total -= recuperer_nb_produit($colis_u[$j]);
-      $continue = 0 ;
-    }
-
-    else
-    {
-      $_SESSION['etape'][$i+$j] = $adresse_u[$j];
-      $_SESSION['colis'][$i+$j] = $colis_u[$j];
-
-      $nb_adresses--;
-      $nombre_adresse_total ++;
-      $j++;
-    }
-    
+        $nombre_colis_total -= recuperer_nb_produit($colis_u[$j]);
+        $continue = 0 ;
       }
 
+      else
+      {
+        $_SESSION['etape'][$i+$j] = $adresse_u[$j];
+        $_SESSION['colis'][$i+$j] = $colis_u[$j];
+
+        $nb_adresses--;
+        $nombre_adresse_total ++;
+        $j++;
+      }
+    
     }
-
-    $_SESSION['nb_adresse'] = $nombre_adresse_total;
-
-    $duree_trajet = 0;
-
-    for ($i=1; $i<$nombre_adresse_total; $i++)
-    {
-      // Fetch content from API
-      include 'api/googleApi.php';
-      $url = "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=".$_SESSION['etape'][$i-1]."&origins=".$_SESSION['etape'][$i]."&units=imperial&key=".$key;
-      $data = file_get_contents($url);
-
-      // Convert content to JSON format
-      $json = json_decode($data,true);
-
-      // Check if the conversion to json format went well, if there is a problem, we write this error message
-      if ($json === null && json_last_error() !== JSON_ERROR_NONE) {
-      echo 'Erreur lors de la conversion en JSON : ' . json_last_error_msg();
-      } 
-
-      // get trip duration and convert it to int
-      $duree_trajet += (int)$json['rows'][0]['elements'][0]['duration']['value'];
-    }
-
-    $_SESSION['duree_trajet'] = $duree_trajet;
 
   }
+
+  $_SESSION['nb_adresse'] = $nombre_adresse_total;
+
+  $duree_trajet = 0;
+
+  // loop to retrieve the delivery time
+  for ($i=1; $i<$nombre_adresse_total; $i++)
+  {
+    // Fetch content from API
+    include 'api/googleApi.php';
+    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?destinations=".$_SESSION['etape'][$i-1]."&origins=".$_SESSION['etape'][$i]."&units=imperial&key=".$key;
+    $data = file_get_contents($url);
+
+    // Convert content to JSON format
+    $json = json_decode($data,true);
+
+    // Check if the conversion to json format went well, if there is a problem, we write this error message
+    if ($json === null && json_last_error() !== JSON_ERROR_NONE) {
+    echo 'Erreur lors de la conversion en JSON : ' . json_last_error_msg();
+    } 
+
+    // get trip duration and convert it to int
+    $duree_trajet += (int)$json['rows'][0]['elements'][0]['duration']['value'];
+  }
+
+  $_SESSION['duree_trajet'] = $duree_trajet;
+
+}
 
 ?>

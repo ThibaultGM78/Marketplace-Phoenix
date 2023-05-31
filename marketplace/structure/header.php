@@ -66,7 +66,7 @@
                         <a class="nav-link" href="index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="market.php">Marche</a>
+                        <a class="nav-link" href="market.php">Marché</a>
                     </li>
 
                     <?php
