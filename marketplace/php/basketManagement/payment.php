@@ -34,7 +34,7 @@
                 $list = sqlSearch($PDO, $sql);
                 
                 $idCompagny = $list[0]["id_compagny"];
-                $price = $list[0]["product_price"]*reduction($PDO);               
+                $price = $list[0]["product_price"]*reduction($PDO)*$nBuy;               
                 $actualMonth = date('F');
 
                 $productStats = json_decode($list[0]["product_stats"], true);
