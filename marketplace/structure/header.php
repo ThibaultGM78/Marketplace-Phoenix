@@ -23,7 +23,7 @@
                             </form>
                         </div>';
                     }
-                    else{
+                    else {
                         echo '
                         <div class="input-box">
                             <form method="post" onsubmit="return validateForm()" action="market.php" class="mb-3">
@@ -93,7 +93,7 @@
 
                     <?php
         
-                if(empty($_SESSION['login'])){
+                if($_SESSION['role'] != 'compagny' && $_SESSION['role'] != 'user'){
                     echo '<li><a class="nav-link" aria-current="page" href="connection.php">Connexion</a></li>';
                 }
                 else{
