@@ -1,5 +1,1 @@
 Bug page produit
-
-Le nom du logo en noir et blanc des pages connexion livreur doit être update de logow.png à "logoW.png" dans les codes. Ou alors de façon plus uniforme changer le nom de l'image dans /deliveries/src pour "logow.png"
-
-Problème d'affichage pour commande à 4 chiffres sur le choix d'un article : la div "€" reste fixe pendant que le prix courant augmente
