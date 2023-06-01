@@ -60,7 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 
    //preparer la requet
-   $req = $PDO->prepare('SELECT * FROM marketplace_product WHERE product_category LIKE ? OR product_name LIKE ?');
+   $req = $PDO->prepare('SELECT pr.*, com.*, con.*
+    FROM marketplace_product pr
+    JOIN marketplace_compagny com ON com.id_compagny = pr.id_compagny
+    LEFT JOIN marketplace_contract con ON con.id_contract = com.id_contract
+    LIKE ? OR product_name LIKE ?
+    ORDER BY con.contract_commission DESC, con.id_contract IS NULL');
    //transmettre la liste des parametres
    $req->execute(array('%' . $_POST['category'] . '%', '%' . $_POST['category'] . '%'));
 
@@ -89,7 +94,12 @@ else{
     */
 
     //preparer la requet
-    $req = $PDO->prepare('select * from marketplace_product ORDER BY id_product LIMIT 45');
+    $req = $PDO->prepare('SELECT pr.*, com.*, con.*
+    FROM marketplace_product pr
+    JOIN marketplace_compagny com ON com.id_compagny = pr.id_compagny
+    LEFT JOIN marketplace_contract con ON con.id_contract = com.id_contract
+    ORDER BY con.contract_commission DESC, con.id_contract IS NULL
+    ');
     //
     //transmettre la liste des parametres
     $req->execute();
