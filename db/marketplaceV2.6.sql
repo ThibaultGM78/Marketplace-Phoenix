@@ -131,12 +131,12 @@
     VALUES(2,"MaximePull",2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
     INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
     VALUES(3,"EISTEL",3, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
-    INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
-    VALUES(4,"TBShop",4, '{"January": 158,"February": 124,"March": 108,"April": 100,"May": 164,"June": 145,"July": 144,"August": 129,"September": 136,"October": 178,"November": 211,"December": 185,"lastSaleMonth": "3647"}');
-    INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
-    VALUES(5,"Mugiwarren",4, '{"January": 158,"February": 124,"March": 108,"April": 100,"May": 164,"June": 145,"July": 144,"August": 129,"September": 136,"October": 178,"November": 211,"December": 185,"lastSaleMonth": "3647"}');
-    INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`id_contract`,`compagny_turnover`)
-    VALUES(6,"Decathlon",4, '{"January": 100,"February": 70,"March": 108,"April": 50,"May": 164,"June": 140,"July": 144,"August": 111,"September": 96,"October": 178,"November": 180,"December": 185,"lastSaleMonth": "147"}');
+    INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`compagny_turnover`)
+    VALUES(4,"TBShop",'{"January": 158,"February": 124,"March": 108,"April": 100,"May": 164,"June": 145,"July": 144,"August": 129,"September": 136,"October": 178,"November": 211,"December": 185,"lastSaleMonth": "3647"}');
+    INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`compagny_turnover`)
+    VALUES(5,"Mugiwarren",'{"January": 158,"February": 124,"March": 108,"April": 100,"May": 164,"June": 145,"July": 144,"August": 129,"September": 136,"October": 178,"November": 211,"December": 185,"lastSaleMonth": "3647"}');
+    INSERT INTO `marketplace_compagny`(`id_user`,`compagny_name`,`compagny_turnover`)
+    VALUES(6,"Decathlon",'{"January": 100,"February": 70,"March": 108,"April": 50,"May": 164,"June": 140,"July": 144,"August": 111,"September": 96,"October": 178,"November": 180,"December": 185,"lastSaleMonth": "147"}');
     SELECT * FROM marketplace_compagny;
 
     /*DELETE marketplace_contract, marketplace_compagny FROM marketplace_contract
@@ -163,7 +163,7 @@
     VALUES("PS5",550,"console",7,"Console de salon SONY derniere generation","img/compagny/MaximePull/ps5.jpg", 2, '{"January": 0,"February": 0,"March": 0,"April": 0,"May": 0,"June": 0,"July": 0,"August": 0,"September": 0,"October": 0,"November": 0,"December": 0,"lastSaleMonth": ""}');
     INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
     VALUES("TV Samsung Oled",950,"Television",7,"TV derniere generation commercialisee par Samsung","img/compagny/MaximePull/tvsamsung.jpg", 2, '{"January": 7,"February": 12,"March": 9,"April": 3,"May": 5,"June": 5,"July": 6,"August": 8,"September": 14,"October": 12,"November": 10,"December": 11,"lastSaleMonth": "10000"}');
-    /*Mugiwaren*/
+    /*Mugiwarren*/
     INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
     VALUES("Raquette de Padel",50,"Sport",23,"Une belle raquette de padel en forme de diamant pour assurer un equilibre entre contrôle et puissance","img/compagny/Mugiwarren/raquettepadel.jpg", 5, '{"January": 7,"February": 12,"March": 9,"April": 3,"May": 5,"June": 5,"July": 6,"August": 8,"September": 14,"October": 12,"November": 10,"December": 11,"lastSaleMonth": "1586"}');
     INSERT INTO `marketplace_product`(`product_name`, `product_price`, `product_category`, `product_stock`, `product_desc`, `product_img`, `id_compagny`, `product_stats`)
