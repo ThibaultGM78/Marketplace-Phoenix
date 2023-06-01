@@ -64,8 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     FROM marketplace_product pr
     JOIN marketplace_compagny com ON com.id_compagny = pr.id_compagny
     LEFT JOIN marketplace_contract con ON con.id_contract = com.id_contract
-    LIKE ? OR product_name LIKE ?
-    ORDER BY con.contract_commission DESC, con.id_contract IS NULL');
+    WHERE product_category LIKE ? OR product_name LIKE ?
+    ORDER BY con.contract_commission DESC, con.id_contract IS NULL
+   ');
    //transmettre la liste des parametres
    $req->execute(array('%' . $_POST['category'] . '%', '%' . $_POST['category'] . '%'));
 
