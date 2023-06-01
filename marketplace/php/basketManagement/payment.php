@@ -90,6 +90,12 @@
             }
         }  
         //--Part Purchase
+        //On retire du panier les produits acheté 0 fois
+        $data = json_decode($_SESSION['basket'], true);
+        $data = array_filter($data, function($value) {
+            return $value !== 0;
+        });
+        $basket = json_encode($data);
 
         $sql = "SELECT id_customer FROM marketplace_customer WHERE id_user = '".$_SESSION['id']."';";
         $list = sqlSearch($PDO,$sql);
@@ -108,7 +114,7 @@
 
         $sql = "INSERT INTO `marketplace_archive`(`id_customer`, `purchase_date`, `purchase_basket`, `purchase_adress`)
         VALUES
-        ('".$idCustomer."','".date('Y-m-d')."','".$_SESSION['basket']."','".$_GET['adress']."');";
+        ('".$idCustomer."','".date('Y-m-d')."','".$_SESSION['basket']."','".$basket."');";
         $request = $PDO->prepare($sql);
         $request->execute();
 

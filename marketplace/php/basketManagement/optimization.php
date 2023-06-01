@@ -35,7 +35,7 @@
             $list = sqlSearch($PDO,$sql);
 
             $productId = $list[0]['id_product'];
-            $JSON->$productId = $nBuy;
+            $JSON->$productId += $nBuy;
 
         }  
 

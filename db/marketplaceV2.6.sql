@@ -228,15 +228,6 @@
     );
     ALTER TABLE marketplace_archive MODIFY etatExped ENUM('enPreparation', 'prepare', 'Livre') DEFAULT 'enPreparation';
 
-
-    INSERT INTO marketplace_archive (id_purchase, id_customer, purchase_date, purchase_basket, purchase_adress, id_Livreur, etatExped, date_livraison) VALUES
-    (1,1,'2022-02-02', '{"1":2}', '12 Rue de la Paix, Paris', 1,'enPreparation', '2022-02-03'),
-    (2,2,'2022-02-03', '{"1":2}', '8 Avenue des Champs-elysees, Paris', 2,'enPreparation', '2022-02-03'),
-    (3,3,'2022-02-05', '{"3":3,"4":1,"4":1}', '5 Rue de Rivoli, Paris', 3, 'enPreparation', '2022-02-03'),
-    (4,4,'2022-02-06', '{"1":7,"3":2}', '20 Rue de la Liberte, Lyon', 4, 'enPreparation', '2022-02-03'),
-    (5,5,'2022-02-08', '{"1":1}', '2 Rue du Faubourg Saint-Honore, Paris', 5, 'enPreparation', '2022-02-03'),
-    (6,6,'2022-02-09', '{"2":2}', '15 Rue de la Republique, Marseille', 6, 'enPreparation', '2022-02-03');
-
     CREATE TABLE marketplace_Vehicle (
     id_Vehicle INT NOT NULL AUTO_INCREMENT,
     id_Livreur INT NOT NULL,
