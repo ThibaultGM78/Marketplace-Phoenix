@@ -8,7 +8,10 @@ You will find a fake buying and selling platform. As well as a parcel delivery m
 
 Please create the sql tables with the scripts contained in the folder db.
 
+You must put in the api/googleApi files your user key.
+
 ## Use
 
 Before launching the site you must host locally and launch SQL.
+
 The marketplace website is in the marketplace folder and the delivery webapp is in deliveries folder.
