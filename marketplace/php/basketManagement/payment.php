@@ -114,7 +114,7 @@
 
         $sql = "INSERT INTO `marketplace_archive`(`id_customer`, `purchase_date`, `purchase_basket`, `purchase_adress`)
         VALUES
-        ('".$idCustomer."','".date('Y-m-d')."','".$_SESSION['basket']."','".$basket."');";
+        ('".$idCustomer."','".date('Y-m-d')."','".$_SESSION['basket']."','".$_GET['adress']."');";
         $request = $PDO->prepare($sql);
         $request->execute();
 
