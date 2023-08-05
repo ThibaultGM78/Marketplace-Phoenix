@@ -1,1 +1,17 @@
-coucou
+## General Info
+
+This project is a school assignment designed by Warren ANDERSON, Maxime CABRIT, Thibault GARCIA-MEGEVAND, Noaman HADDACHE and Moussa KONE
+
+## Phoenix_Project
+
+Fake marketplace website.  
+
+Language and technology used: HTML, CSS, JavaScript, PHP, AJAX et SQL. 
+
+## Installation
+
+Please create the sql tables with the scripts contained in the sql folder
+
+## Use
+
+Before launching the site you must host locally and launch SQL
